@@ -5,9 +5,9 @@ const Spot = require('../models/Spot.model');
 
 // create event
 router.post('/events', (req, res) => {
-    const { name, description, price, date, signupRequired, signupLink, ownerId } = req.body;
+    const { name, description, price, date, signupRequired, signupLink, eventImage, ownerId } = req.body;
    
-    Event.create({ name, description, price, date, signupRequired, signupLink, owner: ownerId })
+    Event.create({ name, description, price, date, signupRequired, signupLink, eventImage, owner: ownerId })
       .then(newEvent => {
         return Spot.findByIdAndUpdate(ownerId, { $push: { events: newEvent._id } } );
       })
@@ -22,6 +22,7 @@ router.get('/events', (req, res) => {
             .then(allEvents => res.json(allEvents))
             .catch(err => console.error(err))
 });
+
 
 // particular event details
 router.get('/events/:eventId', (req, res) => {
