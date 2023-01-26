@@ -1,13 +1,22 @@
 const { Schema, model } = require("mongoose");
 
-const gastroSchema = new Schema(
+const spotSchema = new Schema(
   {
     type: {
         type: String,
         enum: ['Cafe', 'Restaurant', 'Bar'],
         required: true
     },
+    meal: {
+        type: [String],
+        enum: ["Breakfast", "Brunch", "Lunch", "Dinner", "Late Night Food", "Drinks"],
+        required: true
+    },
     name: {
+        type: String,
+        required: true
+    },
+    tagline: {
         type: String,
         required: true
     },
@@ -15,16 +24,13 @@ const gastroSchema = new Schema(
         type: String,
         required: true
     },
-    openingTimes: {
+    openingTimes: { // Lets make this a dropdown?
         type: String, // I'm gonna require the user to use actual times here by utilizing the same methodology as our password verifier (aka opens at 10:30, rather than 1988392)
     },
     menuImage: {
         type: String
     },
-    outsideImage: {
-        type: String
-    },
-    menuImage: {
+    spotImage: {
         type: String
     },
     priceLevel: {
@@ -40,7 +46,7 @@ const gastroSchema = new Schema(
     coffeeRating: {
         type: Number
     },
-    drinkRating: {
+    drinkRating: {      //coffee & drinks or just drinkRating?
         type: Number
     },
     foodRating: {
@@ -54,10 +60,27 @@ const gastroSchema = new Schema(
     },
     hasPool: {
         type: Boolean
-    }
+    },
+    coWorkingFriendly: {
+        type: Boolean
+    },
+    dateFriendly: {
+        type: Boolean
+    },
+    outsideSeating: {
+        type: Boolean
+    },
+    wifiSpeed: {
+        type: Number
+    },
+    hasSockets: {
+        type: Boolean
+    },
+    events: [{ type: Schema.Types.ObjectId, ref: "Events" }],
+    consumables: [{ type: Schema.Types.ObjectId, ref: "Consumables" }]
 }
 );
 
-const User = model("User", userSchema);
+const Spot = model("Spot", spotSchema);
 
-module.exports = User;
+module.exports = Spot;
