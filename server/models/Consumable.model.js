@@ -20,7 +20,7 @@ const consumableSchema = new Schema(
     },
     image: {
         type: String,
-        required: true
+        // required: true
     },
     owner: {type: Schema.Types.ObjectId, ref: "Spot"}
   }
