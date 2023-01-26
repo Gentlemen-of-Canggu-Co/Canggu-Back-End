@@ -15,7 +15,7 @@ const eventSchema = new Schema(
     },
     date: {
         type: Date, // is this correct?
-        required: true
+        // required: true
     },
     signupRequired: {
         type: Boolean
