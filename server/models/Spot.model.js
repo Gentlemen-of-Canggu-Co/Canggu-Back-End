@@ -25,7 +25,7 @@ const spotSchema = new Schema(
         required: true
     },
     openingTimes: { // Lets make this a dropdown?
-        type: String, // I'm gonna require the user to use actual times here by utilizing the same methodology as our password verifier (aka opens at 10:30, rather than 1988392)
+        type: String
     },
     menuImage: {
         type: String
@@ -46,7 +46,7 @@ const spotSchema = new Schema(
     coffeeRating: {
         type: Number
     },
-    drinkRating: {      //coffee & drinks or just drinkRating?
+    drinkRating: { 
         type: Number
     },
     foodRating: {

@@ -14,15 +14,19 @@ const eventSchema = new Schema(
         required: true
     },
     date: {
-        type: date // is this correct?
+        type: Date, // is this correct?
+        required: true
     },
     signupRequired: {
-        type: boolean
+        type: Boolean
     },
     signupLink: {
         type: String
     },
-    owner: {type: Schema.Types.ObjectId, ref: "Spot"}
+    owner: {
+        type: Schema.Types.ObjectId,
+        ref: "Spot"
+    }
   }
 );
 
