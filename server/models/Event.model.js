@@ -23,6 +23,9 @@ const eventSchema = new Schema(
     signupLink: {
         type: String
     },
+    eventImage: {
+        type: String
+    },
     owner: {
         type: Schema.Types.ObjectId,
         ref: "Spot"
