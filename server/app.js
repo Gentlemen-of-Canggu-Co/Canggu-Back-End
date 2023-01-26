@@ -21,7 +21,7 @@ app.use("/api", indexRoutes);
 const eventRoutes = require("./routes/event.routes");
 app.use("/api", eventRoutes);
 
-const spotRoutes = require("./routes/spot.routes");
+const spotRoutes = require("./routes/spots.routes");
 app.use("/api", spotRoutes);
 
 const consumableRoutes = require("./routes/consumable.routes");

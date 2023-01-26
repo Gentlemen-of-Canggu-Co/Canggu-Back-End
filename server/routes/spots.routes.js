@@ -4,7 +4,7 @@ const Spot = require('../models/Spot.model');
 
 
 // create spot
-router.post('/spot', isAuthenticated, (req, res) => {
+router.post('/spots', (req, res) => {
     const { type, meal, name, tagline, location, openingTimes, menuImage, spotImage, priceLevel, description, overallRating, coffeeRating, drinkRating, foodRating, ambienceRating, veganFriendly, hasPool, coWorkingFriendly, dateFriendly, outsideSeating, wifiSpeed, hasSockets } = req.body;
  
     Spot.create({ type, meal, name, tagline, location, openingTimes, menuImage, spotImage, priceLevel, description, overallRating, coffeeRating, drinkRating, foodRating, ambienceRating, veganFriendly, hasPool, coWorkingFriendly, dateFriendly, outsideSeating, wifiSpeed, hasSockets, events: [], consumables: [] })
@@ -13,28 +13,33 @@ router.post('/spot', isAuthenticated, (req, res) => {
 });
 
 // list spots
-router.get('/spot', isAuthenticated, (req, res) => {
+router.get('/spots', (req, res) => {
     Spot.find()
             .populate('consumables')
-            .populate('events')
+            // .populate('events')
             .then(allSpots => res.json(allSpots))
             .catch(err => console.error(err))
 });
 
 // particular spot details
-router.get('/spot/:spotId', isAuthenticated, (req, res) => {
+router.get('/spots/:spotId', (req, res) => {
     const {spotId} = req.params;
+
+    Spot.findById(spotId)
+    // .populate('consumables')
+    .then(foundProject => res.json(foundProject))
+    .catch(err => console.log(err)) 
 
 });
 
 // edit particular spot
-router.put('/spot/:spotId', isAuthenticated, (req, res) => {
+router.put('/spots/:spotId', isAuthenticated, (req, res) => {
     const {spotId} = req.params;
 
 });
 
 // delete particular spot
-router.delete('/spot/:spotId', isAuthenticated, (req, res) => {
+router.delete('/spots/:spotId', isAuthenticated, (req, res) => {
     const {spotId} = req.params;
 
 })
