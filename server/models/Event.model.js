@@ -24,7 +24,8 @@ const eventSchema = new Schema(
         type: String
     },
     eventImage: {
-        type: String
+        type: String,
+        default: "https://img.freepik.com/premium-vector/red-beer-pong-pyramyd-illustration-plastic-cups-ball-with-splashing-beer-traditional-party-drinking-game_501173-311.jpg?w=2000"
     },
     owner: {
         type: Schema.Types.ObjectId,

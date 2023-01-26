@@ -15,14 +15,14 @@ router.post('/events', (req, res) => {
       .catch(err => res.status(err));
   });
 
-  // list events
+// get all events
 router.get('/events', (req, res) => {
 
-  Event.find()
-          .then(allEvents => res.json(allEvents))
-          .catch(err => console.error(err))
+    Event.find()
+            .then(allEvents => res.json(allEvents))
+            .catch(err => console.error(err))
 });
-  
+
 
 // particular event details
 router.get('/events/:eventId', (req, res) => {

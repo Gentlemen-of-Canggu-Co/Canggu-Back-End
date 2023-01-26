@@ -35,7 +35,7 @@ function App() {
         />
 
 <Route
-          path="/events/detail"
+          path="/events/:eventId"
           element={
               <EventDetailPage />
           }
