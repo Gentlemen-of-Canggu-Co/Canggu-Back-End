@@ -4,7 +4,7 @@ const Consumable = require('../models/Consumable.model');
 const Spot = require('../models/Spot.model');
 
 
-router.post('/consumable', isAuthenticated, (req, res) => {
+router.post('/consumable', (req, res) => {
     const { name, tagline, price, rating, image, ownerId } = req.body;
    
     Consumable.create({ name, tagline, price, rating, image, owner: ownerId })

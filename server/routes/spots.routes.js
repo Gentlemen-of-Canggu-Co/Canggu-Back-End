@@ -1,5 +1,7 @@
 const router = require("express").Router();
-// const { isAuthenticated } = require("../middleware/jwt.middleware.js");
+
+const { isAuthenticated } = require("../middleware/jwt.middleware.js");
+
 const Spot = require('../models/Spot.model');
 
 
@@ -25,6 +27,17 @@ router.get('/spots', (req, res) => {
 router.get('/spots/:spotId', (req, res) => {
     const {spotId} = req.params;
 
+
+    Spot.findById(spotId)
+    // .populate('consumables')
+    .then(foundProject => res.json(foundProject))
+    .catch(err => console.log(err)) 
+
+});
+
+// edit particular spot
+router.put('/spots/:spotId', isAuthenticated, (req, res) => {
+
 });
 
 // edit particular spot
@@ -34,7 +47,9 @@ router.put('/spots/:spotId', (req, res) => {
 });
 
 // delete particular spot
+
 router.delete('/spots/:spotId', (req, res) => {
+
     const {spotId} = req.params;
 
 })
