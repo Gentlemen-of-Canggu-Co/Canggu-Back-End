@@ -43,10 +43,10 @@ const spotSchema = new Schema(
     overallRating: {
         type: Number
     },
-    coffeeRating: {
+    coffeeRating: {      
         type: Number
     },
-    drinkRating: {      //coffee & drinks or just drinkRating?
+    drinksRating: {      
         type: Number
     },
     foodRating: {
