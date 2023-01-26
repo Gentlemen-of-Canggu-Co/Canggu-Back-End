@@ -16,6 +16,7 @@ router.post('/spots', (req, res) => {
 
 // list spots
 router.get('/spots', (req, res) => {
+
     Spot.find()
             // .populate('consumables')
             // .populate('events')
@@ -27,31 +28,33 @@ router.get('/spots', (req, res) => {
 router.get('/spots/:spotId', (req, res) => {
     const {spotId} = req.params;
 
-
     Spot.findById(spotId)
     // .populate('consumables')
-    .then(foundProject => res.json(foundProject))
+    // .populate('events')
+    .then(foundSpot => res.json(foundSpot))
     .catch(err => console.log(err)) 
-
-});
-
-// edit particular spot
-router.put('/spots/:spotId', isAuthenticated, (req, res) => {
 
 });
 
 // edit particular spot
 router.put('/spots/:spotId', (req, res) => {
     const {spotId} = req.params;
+    const { type, meal, name, tagline, location, openingTimes, menuImage, spotImage, priceLevel, description, overallRating, coffeeRating, drinkRating, foodRating, ambienceRating, veganFriendly, hasPool, coWorkingFriendly, dateFriendly, outsideSeating, wifiSpeed, hasSockets } = req.body;
+
+    Spot.findByIdAndUpdate(spotId, { type, meal, name, tagline, location, openingTimes, menuImage, spotImage, priceLevel, description, overallRating, coffeeRating, drinkRating, foodRating, ambienceRating, veganFriendly, hasPool, coWorkingFriendly, dateFriendly, outsideSeating, wifiSpeed, hasSockets }, {new: true})
+            .then(updatedSpot => res.json(updatedSpot))
+            .catch(err => console.log(err))
 
 });
 
 // delete particular spot
 
 router.delete('/spots/:spotId', (req, res) => {
-
     const {spotId} = req.params;
 
+    Spot.findByIdAndDelete(spotId)
+            .then(deletedSpot => res.json(deletedSpot))
+            .catch(err => console.log(err))
 })
 
 
