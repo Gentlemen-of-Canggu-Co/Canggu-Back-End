@@ -9,13 +9,13 @@ import EventDetailPage from "./pages/EventDetailPage"
 import LoginPage from "./pages/LoginPage";
 
 import Navbar from "./components/Navbar/Navbar";
-import IsPrivate from "./components/IsPrivate/IsPrivate";
+// import IsPrivate from "./components/IsPrivate/IsPrivate";
 import IsAnon from "./components/IsAnon/IsAnon";
 
 function App() {
   return (
     <div className="App">
-      {/* <Navbar /> */}
+      <Navbar />
 
       <Routes>
         <Route path="/" element={<HomePage />} />
