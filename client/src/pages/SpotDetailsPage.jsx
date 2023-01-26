@@ -1,25 +1,41 @@
+import { useState, useEffect } from "react";
+import axios from "axios";
+import { useParams } from "react-router-dom";
+
 function SpotDetailsPage() {
+
+const API_URL= "http://localhost:5005"
+const {spotId} = useParams()
+console.log("ID", spotId)
+const [spot, setSpot] = useState({})
+
+useEffect(() => {
+  axios.get(`${API_URL}/api/spots/${spotId}`)
+    .then(response => setSpot(response.data))
+}, [spotId])
+
   return (
 
     //  IMG/Slider Component
 <div>
 
     <div>
-    <img src="https://dojobali.org/wp-content/uploads/2020/01/koast-web-images-04.jpg" alt="cafe_image"/>
+    <img src={spot.spotImage} alt="cafe_image"/>
     </div>
 
 
     <div>
 
 {// Overview Component
-}        <div style={{display: "flex", justifyContent: "space-between"}}>
-            <h1>Headline</h1>
+}        
+<div style={{display: "flex", justifyContent: "space-between"}}>
+<h1>{spot.name}</h1>
             <a href="#">See menu</a>
         </div>
 
         <div style={{display: "flex", justifyContent: "space-between", borderColor: "black", borderStyle: "solid"}}>
-            <p>This is the Tagline</p>
-            <p>Rating: 76</p>
+            <p>{spot.tagline}</p>
+            <p>Rating: {spot.overallRating}</p>
         </div>
 
     </div>
@@ -28,17 +44,17 @@ function SpotDetailsPage() {
 }    <div style={{display: "flex", justifyContent: "space-between"}}>
 
       <div >
-        <p>42</p>
+        <p>{spot.foodRating}</p>
         <p>Food</p>
       </div>   
 
     <div>
-    <p>71</p>
+    <p>{spot.coffeeRating}</p>
         <p>Coffee</p> 
       </div> 
       
     <div>
-    <p>71</p>
+    <p>{spot.ambienceRating}</p>
         <p>Ambience</p>   
       </div>    
 
@@ -60,30 +76,35 @@ function SpotDetailsPage() {
 {//Menu Component
 }
 <div>
-<img style={{width: "100vw"}} src="https://img.freepik.com/premium-vector/digital-restaurant-menu-horizontal-format_23-2148655475.jpg?w=2000" alt="pictogram" />
+<img style={{width: "100vw"}} src={spot.menuImage} alt="pictogram" />
 </div>
 
 {//Dropdown Component
-}<button class="accordion">Opening Times & Contact</button>
-<div class="panel">
-  <p>Opening times <br></br>Monday <br></br>Tuesday <br></br>Wednesday <br></br>Thursday <br></br>Friday</p>
+}<button className="accordion">Opening Times & Contact</button>
+<div className="panel">
+  <p>Opening times: {spot.openingTimes}</p>
 </div>
 
 
 
 
 {//Map Component
-}<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15777.577630593447!2d115.1270335!3d-8.653987!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd239dbf9282b27%3A0x72807e8552a62db5!2sKoast%20Cafe!5e0!3m2!1sen!2sid!4v1674728731974!5m2!1sen!2sid" title="whatever"></iframe>
+}
+
+<div
+      dangerouslySetInnerHTML={{__html: spot.location}}
+    />
 
 
 {//Description Component
 }
 
 <h2>Description</h2>
-<p>Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum  Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum </p>
+<p>{spot.description}</p>
 
 
 </div>
+
 
 
 

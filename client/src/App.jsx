@@ -21,7 +21,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
 
         <Route
-          path="/spots-detail"
+          path="/spots/:spotId"
           element={
               <SpotDetailsPage />
           }
