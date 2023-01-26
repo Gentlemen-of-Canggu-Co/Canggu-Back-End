@@ -1,5 +1,7 @@
 import {useState, useEffect} from "react"
 import axios from 'axios';
+import { Link } from "react-router-dom";
+
 
 function EventList(){
 
@@ -18,13 +20,13 @@ function EventList(){
 <h1>Upcoming events in Canggus Spots</h1>
 
 {events.map((event) => {
-        return           <div class="card" style={{width: "18rem"}}>
+        return      <Link key={event._id} to={`/events/${event._id}`}>     <div class="card" style={{width: "18rem"}}>
   <img class="card-img-top" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTu_YG7-dxa-Y6LweEAKHqXDgt_ZkPx1XZ5Yg&usqp=CAU" alt="event title"/>
   <div class="card-body">
   <p class="card-text">{event.name}</p>
     <p class="card-text">Spot Name | {event.date}</p>
   </div>
-</div>
+</div> </Link>
       })}
 
 

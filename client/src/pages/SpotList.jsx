@@ -1,5 +1,7 @@
 import {useState, useEffect} from "react"
 import axios from 'axios';
+import { Link } from "react-router-dom";
+
 
 function SpotList(){
 
@@ -51,7 +53,7 @@ function SpotList(){
         
     {
         spots.map((spot) => {
-            return <div className="card" style={{width: "18rem;", borderStyle: "solid", borderColor: "black", borderWidth: "10px"}}>
+            return <Link key={spot._id} to={`/spots/${spot._id}`}><div className="card" style={{width: "18rem;", borderStyle: "solid", borderColor: "black", borderWidth: "10px"}}>
   <img className="card-img-top" src="https://dojobali.org/wp-content/uploads/2020/01/koast-web-images-03.jpg" alt="spot_view"/>
   <div className="card-body">
     <h2 className="card-text">{spot.name}</h2>
@@ -76,6 +78,7 @@ function SpotList(){
 
   </div>
 </div>
+</Link>
         })
     }
 
