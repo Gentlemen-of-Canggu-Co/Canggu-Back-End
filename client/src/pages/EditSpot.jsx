@@ -1,109 +1,93 @@
-import { useState } from 'react';
-import { useNavigate } from "react-router-dom";
-import axios from 'axios';
+import { useState, useEffect } from "react";
+import axios from "axios";
+import { useParams, useNavigate } from "react-router-dom";
 
-function AddSpot(){
+function EditSpot(){
 
+const navigate = useNavigate()
+const {spotId} = useParams()    
+const API_URL= "http://localhost:5005"
 
-    const [type, setType] = useState([])
-    const [name, setName] = useState("")
-    const [tagline, setTagline] = useState("")
-    const [location, setLocation] = useState("")
-    const [openingTimes, setOpeningTimes] = useState("")
-    const [menuImage, setMenuImage] = useState("")
-    const [spotImage, setSpotImage] = useState("")
-    const [priceLevel, setPriceLevel] = useState("")
-    const [description, setDescription] = useState("")
-    const [overallRating, setOverallRating] = useState()
-    const [coffeeRating, setCoffeeRating] = useState()
-    const [drinkRating, setDrinkRating] = useState()
-    const [foodRating, setFoodRating] = useState()
-    const [ambienceRating, setAmbienceRating] = useState()
-    const [veganFriendly, setVeganFriendly] = useState(false)
-    const [hasPool, setHasPool] = useState(false)
-    const [coWorkingFriendly, setCoWorkingFriendly] = useState(false)
-    const [dateFriendly, setDateFriendly] = useState(false)
-    const [outsideSeating, setOutsideSeating] = useState(false)
-    const [wifiSpeed, setWifiSpeed] = useState(false)
-    const [hasSockets, setHasSockets] = useState(false)
-    const consumables = [{}]
-    const events = [{}]
-    const [meal1, setMeal1] = useState("")
-    const [meal2, setMeal2] = useState("")
-    const [meal3, setMeal3] = useState("")
-    const [meal4, setMeal4] = useState("")
-    const [meal5, setMeal5] = useState("")
-    const [meal6, setMeal6] = useState("")
+const [type, setType] = useState([])
+const [name, setName] = useState("")
+const [meal, setMeal] = useState([])
+const [tagline, setTagline] = useState("")
+const [location, setLocation] = useState("")
+const [openingTimes, setOpeningTimes] = useState("")
+const [menuImage, setMenuImage] = useState("")
+const [spotImage, setSpotImage] = useState("")
+const [priceLevel, setPriceLevel] = useState("")
+const [description, setDescription] = useState("")
+const [overallRating, setOverallRating] = useState()
+const [coffeeRating, setCoffeeRating] = useState()
+const [drinkRating, setDrinkRating] = useState()
+const [foodRating, setFoodRating] = useState()
+const [ambienceRating, setAmbienceRating] = useState()
+const [veganFriendly, setVeganFriendly] = useState(false)
+const [hasPool, setHasPool] = useState(false)
+const [coWorkingFriendly, setCoWorkingFriendly] = useState(false)
+const [dateFriendly, setDateFriendly] = useState(false)
+const [outsideSeating, setOutsideSeating] = useState(false)
+const [wifiSpeed, setWifiSpeed] = useState(false)
+const [hasSockets, setHasSockets] = useState(false)
+const [events, setEvents] = useState([])
+const [consumables, setConsumables] = useState([])
 
- 
+const handleSubmit = (e) => {
+    e.preventDefault()
 
-    const navigate = useNavigate()
-    const API_URL = "http://localhost:5005";
+    const editedSpot = {type, meal, name, tagline, location, openingTimes, menuImage, spotImage, priceLevel, description, overallRating, coffeeRating, drinkRating, foodRating, ambienceRating, veganFriendly, hasPool, coWorkingFriendly, dateFriendly, outsideSeating, wifiSpeed, hasSockets, events, consumables}
 
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        const meal = []
-
-        if (meal1 !== ""){
-            meal.push(meal1)
-        }
-
-        if (meal2 !== ""){
-            meal.push(meal2)
-        }
-
-        if (meal3 !== ""){
-            meal.push(meal3)
-        }
-
-        if (meal4 !== ""){
-            meal.push(meal4)
-        }
-
-        if (meal5 !== ""){
-            meal.push(meal5)
-        }
-
-        if (meal6 !== ""){
-            meal.push(meal6)
-        }
-                
-        const newSpot = {type, meal, name, tagline, location, openingTimes, menuImage, spotImage, priceLevel, description, overallRating, coffeeRating, drinkRating, foodRating, ambienceRating, veganFriendly, hasPool, coWorkingFriendly, dateFriendly, outsideSeating, wifiSpeed, hasSockets, events, consumables}
-    
-        axios.post(`${API_URL}/api/spots`, newSpot)
-            .then((response) => {
-                navigate(`/spots/${response.data._id}`);
-            })
-    }
+    axios.put(`${API_URL}/api/spots/${spotId}`, editedSpot)
+        .then(() => {
+            navigate(`/spots/${spotId}`);
+        })
+}
 
 
-    return(
-        <div>
+
+useEffect(() => {
+    axios.get(`${API_URL}/api/spots/${spotId}`)
+      .then((response) => {
+        setType(response.data.type)
+        setName(response.data.name)
+        setMeal(response.data.meal)
+        setTagline(response.data.tagline)
+        setLocation(response.data.location)
+        setOpeningTimes(response.data.openingTimes)
+        setMenuImage(response.data.menuImage)
+        setSpotImage(response.data.spotImage)
+        setPriceLevel(response.data.priceLevel)
+        setDescription(response.data.description)
+        setOverallRating(response.data.overallRating)
+        setCoffeeRating(response.data.coffeeRating)
+        setDrinkRating(response.data.drinkRating)
+        setFoodRating(response.data.foodRating)
+        setAmbienceRating(response.data.ambienceRating)
+        setVeganFriendly(response.data.veganFriendly)
+        setHasPool(response.data.hasPool)
+        setCoWorkingFriendly(response.data.coWorkingFriendly)
+        setDateFriendly(response.data.dateFriendly)
+        setOutsideSeating(response.data.outsideSeating)
+        setWifiSpeed(response.data.wifiSpeed)
+        setHasSockets(response.data.hasSockets)
+        setConsumables(response.data.consumables)
+        setEvents(response.data.events)
+        
+      }
+      )
+      
+  }, [spotId]) 
+
+
+  return(
+    <div>
 
 <div>
-        <h3>Add new Spot</h3>
+<h3>Edit Spot</h3>
         <form onSubmit={handleSubmit}>
             <label>Type of Spot</label>
             <input type="text" name="type" value={type} onChange={(event) => setType(event.target.value)} />
-            <br/>
-            <label>Type of Meal 1</label>
-            <input type="text" name="meal1" value={meal1} onChange={(event) => setMeal1(event.target.value)} />
-            <br/>
-            <label>Type of Meal 2</label>
-            <input type="text" name="meal2" value={meal2} onChange={(event) => setMeal2(event.target.value)} />
-            <br/>
-            <label>Type of Meal 3</label>
-            <input type="text" name="meal3" value={meal3} onChange={(event) => setMeal3(event.target.value)} />
-            <br/>
-            <br/>
-            <label>Type of Meal 4</label>
-            <input type="text" name="meal4" value={meal4} onChange={(event) => setMeal4(event.target.value)} />
-            <br/>
-            <label>Type of Meal 5</label>
-            <input type="text" name="meal5" value={meal5} onChange={(event) => setMeal5(event.target.value)} />
-            <br/>
-            <label>Type of Meal 6</label>
-            <input type="text" name="meal6" value={meal6} onChange={(event) => setMeal6(event.target.value)} />
             <br/>
             <label>Name of Spot</label>
             <input type="text" name="name" value={name} onChange={(event)=> setName(event.target.value)} />
@@ -166,13 +150,12 @@ function AddSpot(){
             <input type="checkbox" name="hasSockets" value={hasSockets} onChange={(event)=> setHasSockets(event.target.value)} />
             <br/>
             
-            <button type="submit">Add new Spot</button>
+            <button type="submit">Edit Spot</button>
         </form>
-      </div>
+  </div>
 
-        </div>
-    )
+    </div>
+)
 }
 
-
-export default AddSpot
+export default EditSpot

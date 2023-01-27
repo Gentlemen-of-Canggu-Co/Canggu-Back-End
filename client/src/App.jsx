@@ -9,6 +9,7 @@ import EventDetailPage from "./pages/EventDetailPage"
 import LoginPage from "./pages/LoginPage";
 import AddEvent from "./pages/AddEvent";
 import EditEvent from "./pages/EditEvent";
+import EditSpot from "./pages/EditSpot";
 
 import Navbar from "./components/Navbar/Navbar";
 // import IsPrivate from "./components/IsPrivate/IsPrivate";
@@ -48,6 +49,13 @@ function App() {
           path="/events/:eventId"
           element={
               <EventDetailPage />
+          }
+        />
+
+<Route
+          path="/spots/:spotId/edit"
+          element={
+              <EditSpot />
           }
         />
 
