@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import AddConsumable from "../components/AddConsumable";
-import { useParams, Link } from "react-router-dom";
+import AddConsumable from "../components/SpotDetailsPage/AddConsumable";
+import { useParams } from "react-router-dom";
 import ImgSlider from "../components/SpotDetailsPage/ImgSlider";
 import Overview from "../components/SpotDetailsPage/Overview";
 import Ratings from "../components/SpotDetailsPage/Ratings";
@@ -10,6 +10,7 @@ import Menu from "../components/SpotDetailsPage/Menu";
 import Accordion from "../components/SpotDetailsPage/Accordion";
 import Map from "../components/SpotDetailsPage/Map";
 import Description from "../components/SpotDetailsPage/Description";
+import EventCard from "../components/SpotDetailsPage/EventCard";
 
 function SpotDetailsPage() {
 const API_URL= "http://localhost:5005"
@@ -33,31 +34,9 @@ useEffect(() => {
 <Accordion spot={spot}/>
 <Map spot={spot}/>
 <Description spot={spot}/>
+<EventCard spot={spot}/>
 
 
-{spot.events && spot.events.map((singleEvent) =>{
-  return        <div>
-
-<Link to={`/events/${singleEvent._id}/edit`}><button>Edit singleEvent</button></Link>
-
-        <h1>{singleEvent.name} @ {spot.name}</h1>
-
-        <img style={{width: "100vw"}} src={singleEvent.eventImage} alt="singleEventpicture" />
-
-        <div style={{display: "flex", justifyContent: "space-evenly"}}>
-            <p>{singleEvent.date}</p>
-            <p>{singleEvent.price}k IDR</p>
-        </div>
-
-        <p>{singleEvent.description}</p>
-
-<div style={{display: "flex", flexDirection: "column"}}>
-<button>Add to Calendar</button>
-<button>See more Events</button>
-</div>
-
-        </div>
-})}
 
 
 {spot.consumables && spot.consumables.map((singleConsumable) =>{

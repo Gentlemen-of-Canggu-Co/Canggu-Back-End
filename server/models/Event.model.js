@@ -13,9 +13,19 @@ const eventSchema = new Schema(
         type: Number,
         required: true
     },
-    date: {
-        type: Date, // is this correct?
+    startDate: {
+        type: String, // YYYY-MM-DD
         // required: true
+    },
+    endDate: {
+        type: String, // YYYY-MM-DD
+        // required: true
+    },
+    startTime: {
+        type: String // HH:MM
+    },
+    endTime: {
+        type: String // HH:MM
     },
     signupRequired: {
         type: Boolean

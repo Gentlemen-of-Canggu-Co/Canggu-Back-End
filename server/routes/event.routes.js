@@ -20,7 +20,10 @@ router.post("/events", (req, res) => {
     name,
     description,
     price,
-    date,
+    startDate, 
+    endDate, 
+    startTime, 
+    endTime,
     signupRequired,
     signupLink,
     eventImage,
@@ -56,12 +59,12 @@ router.get("/events/:eventId", (req, res) => {
 // edit particular event
 router.put("/events/:eventId", (req, res) => {
   const { eventId } = req.params;
-  const { name, description, price, date, signupRequired, signupLink } =
+  const { name, description, price, startDate, endDate, startTime, endTime, signupRequired, signupLink } =
     req.body;
 
   Event.findByIdAndUpdate(
     eventId,
-    { name, description, price, date, signupRequired, signupLink },
+    { name, description, price, startDate, endDate, startTime, endTime, signupRequired, signupLink },
     { new: true }
   )
     .then((updatedEvent) => res.json(updatedEvent))

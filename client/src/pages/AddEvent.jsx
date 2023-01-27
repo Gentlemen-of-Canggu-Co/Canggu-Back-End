@@ -9,7 +9,10 @@ const {spotId} = useParams()
     const [name, setName] = useState("")
     const [description, setDescription] = useState("")
     const [price, setPrice] = useState()
-    const [date, setDate] = useState("")
+    const [startDate, setStartDate] = useState("")
+    const [endDate, setEndDate] = useState("")
+    const [startTime, setStartTime] = useState("")
+    const [endTime, setEndTime] = useState("")
     const [signupRequired, setSignupRequired] = useState(false)
     const [signupLink, setSignupLink] = useState("No signup required.")
     const [eventImage, setEventImage] = useState("https://img.freepik.com/premium-vector/red-beer-pong-pyramyd-illustration-plastic-cups-ball-with-splashing-beer-traditional-party-drinking-game_501173-311.jpg?w=2000")
@@ -21,7 +24,7 @@ const {spotId} = useParams()
     const handleSubmit = (e) => {
         e.preventDefault()
     
-        const newEvent = {name, description, price, date, signupRequired, signupLink, eventImage, ownerId}
+        const newEvent = {name, description, price, startDate, endDate, startTime, endTime, signupRequired, signupLink, eventImage, ownerId}
     
         axios.post(`${API_URL}/api/events`, newEvent)
             .then(() => {
@@ -45,9 +48,18 @@ const {spotId} = useParams()
             <label>Price</label>
             <input type="number" name="price" value={price} onChange={(event)=> setPrice(Number(event.target.value))} />
             <br/>
-            <label>Date</label>
-            <input type="date" name="date" value={date} onChange={(event)=> setDate(event.target.value)} />
+            <label>Start Date: YYYY-MM-DD</label>
+            <input type="string" name="startDate" value={startDate} onChange={(event)=> setStartDate(event.target.value)} />
             <br/>
+            <label>End Date: YYYY-MM-DD</label>
+            <input type="string" name="endDate" value={endDate} onChange={(event)=> setEndDate(event.target.value)} />
+            <br/>
+            <br/>
+            <label>Start Time: HH:MM</label>
+            <input type="string" name="startTime" value={startTime} onChange={(event)=> setStartTime(event.target.value)} />
+            <br/>
+            <label>End Time: HH:MM</label>
+            <input type="string" name="endTime" value={endTime} onChange={(event)=> setEndTime(event.target.value)} />
             <label>Event image</label>
             <input type="string" name="eventImage" value={eventImage} onChange={(event)=> setEventImage(event.target.value)} />
             <br/>
