@@ -1,26 +1,22 @@
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 const API_URL = "http://localhost:5005";
 
-function DeleteEvent(props){
- const {eventId} = props;
- const navigate = useNavigate()
+function DeleteEvent(props) {
+  const { eventId } = props;
+  const navigate = useNavigate();
 
- 
- const handleSubmit = () => {
+  const handleSubmit = () => {
+    axios
+      .delete(`${API_URL}/api/events/${eventId}`)
+      .then(() => navigate("/events"));
+  };
 
-    axios.delete(`${API_URL}/api/events/${eventId}`)
-      .then(() => navigate('/events')
-      )
-      
-  }
-
-return(
+  return (
     <div>
-        <button onClick={handleSubmit}>Delete Event</button>
+      <button onClick={handleSubmit}>Delete Event</button>
     </div>
-)
-
+  );
 }
 
 export default DeleteEvent;
