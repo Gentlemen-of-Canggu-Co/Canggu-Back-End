@@ -7,10 +7,13 @@ import SpotDetailsPage from "./pages/SpotDetailsPage";
 import EventList from "./pages/EventList";
 import EventDetailPage from "./pages/EventDetailPage"
 import LoginPage from "./pages/LoginPage";
+import AddEvent from "./pages/AddEvent";
+import EditEvent from "./pages/EditEvent";
 
 import Navbar from "./components/Navbar/Navbar";
 // import IsPrivate from "./components/IsPrivate/IsPrivate";
 import IsAnon from "./components/IsAnon/IsAnon";
+import AddSpot from "./pages/AddSpot";
 
 function App() {
   return (
@@ -35,6 +38,13 @@ function App() {
         />
 
 <Route
+          path="/spots/create"
+          element={
+              <AddSpot />
+          }
+        />
+
+<Route
           path="/events/:eventId"
           element={
               <EventDetailPage />
@@ -47,6 +57,21 @@ function App() {
               <EventList />
           }
         />
+
+<Route
+          path="/events/:spotId/create"
+          element={
+            <AddEvent />
+          }
+        />
+
+<Route
+          path="/events/:eventId/edit"
+          element={
+            <EditEvent />
+          }
+        />
+
 
         {/* <Route
           path="/signup"

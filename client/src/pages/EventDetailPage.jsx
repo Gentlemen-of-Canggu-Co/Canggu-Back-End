@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams, Link } from "react-router-dom";
+import DeleteEvent from "../components/DeleteEvent";
 
 function EventDetailPage(){
 
@@ -43,6 +44,7 @@ useEffect(() => {
 <div style={{display: "flex", flexDirection: "column"}}>
 <button>Add to Calendar</button>
 <Link to={'/events'}><button>See more Events</button></Link>
+<DeleteEvent eventId={eventId}/>
 </div>
 
 

@@ -22,6 +22,8 @@ function Navbar() {
         <button>Spots</button>
       </Link>
 
+      <Link to="/spots/create"><button>Add Spot</button></Link>
+
 
     </nav>
   );
