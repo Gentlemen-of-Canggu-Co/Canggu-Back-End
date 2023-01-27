@@ -21,7 +21,6 @@ useEffect(() => {
   axios.get(`${API_URL}/api/spots/${spotId}`)
     .then(response => setSpot(response.data))
 }, [spotId])
-// console.log("SPOT EVENTS===>", console.log(Array.isArray(spot.events)))
   return (
 
 <div>
@@ -52,15 +51,15 @@ useEffect(() => {
             <p>{singleConsumable.rating}</p>
 
         </div>
+        
 
-
-        </div>
-})}
-<AddConsumable ownerId={spotId}/>
-
-
-</div>
-
+            </div>
+        })}
+      <AddConsumable ownerId={spotId} />
+      
+      
+    </div>
+    
   );
 }
 

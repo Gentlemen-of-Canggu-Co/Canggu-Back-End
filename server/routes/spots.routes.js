@@ -15,13 +15,13 @@ router.get('/spots', (req, res) => {
     Spot.find()
             // .populate('consumables')
             // .populate('events')
-            .then(allSpots => res.json(allSpots))
+            .then(allSpots => res.status(200).json(allSpots))
             .catch(err => console.error(err))
 });
 // particular spot details
 router.get('/spots/:spotId', (req, res) => {
     const {spotId} = req.params;
-
+    console.log(spotId);
     Spot.findById(spotId)
     .populate('consumables')
     .populate('events')
