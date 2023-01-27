@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import AddConsumable from "../components/AddConsumable";
 import { useParams, Link } from "react-router-dom";
 import { InstagramEmbed } from 'react-social-media-embed';
 
-function SpotDetailsPage() {
 
+function SpotDetailsPage() {
 const API_URL= "http://localhost:5005"
 const {spotId} = useParams()
 console.log("ID", spotId)
@@ -108,6 +109,8 @@ useEffect(() => {
   <InstagramEmbed url="https://www.instagram.com/p/CneGaTKgVTx/" width={328} />
 </div>
 
+
+<AddConsumable ownerId={spotId}/>
 
 </div>
 
