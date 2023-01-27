@@ -1,26 +1,22 @@
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 const API_URL = "http://localhost:5005";
 
-function DeleteConsumable(props){
- const {spotId} = props;
- const navigate = useNavigate()
+function DeleteConsumable(props) {
+  const { consumableId, spot } = props;
+  const navigate = useNavigate();
 
- 
- const handleSubmit = () => {
+  const handleSubmit = () => {
+    axios
+      .delete(`${API_URL}/api/consumable/${consumableId}`)
+      .then(() => navigate(`/spots/${spot._id}`));
+  };
 
-    axios.delete(`${API_URL}/api/consumable/${spotId}`)
-      .then(() => navigate(`/spots/${spotId}`)
-      )
-      
-  }
-
-return(
+  return (
     <div>
-        <button onClick={handleSubmit}>Delete Event</button>
+      <button onClick={handleSubmit}>Delete Consumable</button>
     </div>
-)
-
+  );
 }
 
 export default DeleteConsumable;

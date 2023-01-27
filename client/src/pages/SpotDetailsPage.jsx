@@ -12,89 +12,91 @@ import Map from "../components/SpotDetailsPage/Map";
 import Description from "../components/SpotDetailsPage/Description";
 
 function SpotDetailsPage() {
-const API_URL= "http://localhost:5005"
-const {spotId} = useParams()
-const [spot, setSpot] = useState({})
+  const API_URL = "http://localhost:5005";
+  const { spotId } = useParams();
+  const [spot, setSpot] = useState({});
 
-useEffect(() => {
-  axios.get(`${API_URL}/api/spots/${spotId}`)
-    .then(response => setSpot(response.data))
-}, [spotId])
-// console.log("SPOT EVENTS===>", console.log(Array.isArray(spot.events)))
+  useEffect(() => {
+    axios
+      .get(`${API_URL}/api/spots/${spotId}`)
+      .then((response) => setSpot(response.data));
+  }, [spotId]);
+
   return (
+    <div>
+      <ImgSlider spot={spot} />
+      <Overview spot={spot} />
+      <Ratings spot={spot} />
+      <Pictograms spot={spot} />
+      <Menu spot={spot} />
+      <Accordion spot={spot} />
+      <Map spot={spot} />
+      <Description spot={spot} />
 
-<div>
+      {spot.events &&
+        spot.events.map((singleEvent) => {
+          return (
+            <div>
+              <Link to={`/events/${singleEvent._id}/edit`}>
+                <button>Edit singleEvent</button>
+              </Link>
 
-<ImgSlider spot={spot}/>
-<Overview spot={spot}/>
-<Ratings spot={spot}/>
-<Pictograms spot={spot}/>
-<Menu spot={spot}/>
-<Accordion spot={spot}/>
-<Map spot={spot}/>
-<Description spot={spot}/>
+              <h1>
+                {singleEvent.name} @ {spot.name}
+              </h1>
 
+              {singleEvent.eventImage && <img
+                style={{ width: "100vw" }}
+                src={singleEvent.eventImage}
+                alt="singleEventpicture"
+              />}
 
-{spot.events && spot.events.map((singleEvent) =>{
-  return        <div>
+              <div style={{ display: "flex", justifyContent: "space-evenly" }}>
+                <p>{singleEvent.date}</p>
+                <p>{singleEvent.price}k IDR</p>
+              </div>
 
-<Link to={`/events/${singleEvent._id}/edit`}><button>Edit singleEvent</button></Link>
+              <p>{singleEvent.description}</p>
+            </div>
+          );
+        })}
+  
 
-        <h1>{singleEvent.name} @ {spot.name}</h1>
+      {/* Dropdown component */}
+      <button className="accordion">Opening Times & Contact</button>
+      <div className="panel">
+        <p>Opening times: {spot.openingTimes}</p>
 
-        <img style={{width: "100vw"}} src={singleEvent.eventImage} alt="singleEventpicture" />
-
-        <div style={{display: "flex", justifyContent: "space-evenly"}}>
-            <p>{singleEvent.date}</p>
-            <p>{singleEvent.price}k IDR</p>
+        <div style={{ display: "flex", flexDirection: "column" }}>
+          <button>Add to Calendar</button>
+          <button>See more Events</button>
         </div>
+      </div>
 
-        <p>{singleEvent.description}</p>
+      {spot.consumables &&
+        spot.consumables.map((singleConsumable) => {
+          return (
+            <div>
+            <Link to={`/consumable/${singleConsumable._id}`}><h1>{singleConsumable.name}</h1></Link>
 
+             {singleConsumable.image && <img
+                style={{ width: "100vw" }}
+                src={singleConsumable.image}
+                alt="singleConsumablepicture"
+              />}
 
-{//Menu Component
-}
-<div>
-{spot.menuImage && <img style={{width: "100vw"}} src={spot.menuImage} alt="menu_image" />}
-</div>
+              <div style={{ display: "flex", justifyContent: "space-evenly" }}>
+                <p>{singleConsumable.tagline}</p>
+                <p>{singleConsumable.price}k IDR</p>
+                <p>{singleConsumable.rating}</p>
+              </div>
 
-{//Dropdown Component
-}<button className="accordion">Opening Times & Contact</button>
-<div className="panel">
-  <p>Opening times: {spot.openingTimes}</p>
+            </div>
+          );
+        })}
 
-<div style={{display: "flex", flexDirection: "column"}}>
-<button>Add to Calendar</button>
-<button>See more Events</button>
-
-</div>
-
-        </div>
-})}
-
-
-{spot.consumables && spot.consumables.map((singleConsumable) =>{
-  return  <div>
-
-        <h1>{singleConsumable.name}</h1>
-
-        <img style={{width: "100vw"}} src={singleConsumable.image} alt="singleEventpicture" />
-
-        <div style={{display: "flex", justifyContent: "space-evenly"}}>
-            <p>{singleConsumable.tagline}</p>
-            <p>{singleConsumable.price}k IDR</p>
-            <p>{singleConsumable.rating}</p>
-
-        </div>
-
-
-        </div>
-})}
-<AddConsumable ownerId={spotId}/>
-
-
-</div>
-
+      <AddConsumable ownerId={spotId} />
+    </div>
   );
 }
 
