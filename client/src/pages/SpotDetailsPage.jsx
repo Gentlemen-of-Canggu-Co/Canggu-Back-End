@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom";
 import AddConsumable from "../components/AddConsumable";
+import { useParams, Link } from "react-router-dom";
+import { InstagramEmbed } from 'react-social-media-embed';
+
 
 function SpotDetailsPage() {
 const API_URL= "http://localhost:5005"
@@ -18,6 +20,7 @@ useEffect(() => {
 
     //  IMG/Slider Component
 <div>
+<Link to={`/events/${spot._id}/create`}><button>Add Event</button></Link>
 
     <div>
     <img src={spot.spotImage} alt="cafe_image"/>
@@ -101,6 +104,10 @@ useEffect(() => {
 
 <h2>Description</h2>
 <p>{spot.description}</p>
+
+<div style={{ display: 'flex', justifyContent: 'center' }}>
+  <InstagramEmbed url="https://www.instagram.com/p/CneGaTKgVTx/" width={328} />
+</div>
 
 
 <AddConsumable ownerId={spotId}/>
