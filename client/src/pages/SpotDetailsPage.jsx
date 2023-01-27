@@ -51,15 +51,15 @@ useEffect(() => {
             <p>{singleConsumable.rating}</p>
 
         </div>
+        
 
-
-        </div>
-})}
-<AddConsumable ownerId={spotId}/>
-
-
-</div>
-
+            </div>
+        })}
+      <AddConsumable ownerId={spotId} />
+      
+      
+    </div>
+    
   );
 }
 

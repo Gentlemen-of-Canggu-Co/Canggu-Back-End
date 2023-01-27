@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const { isAuthenticated } = require("../middleware/jwt.middleware.js");
+const mongoose = require("mongoose");
 const Event = require("../models/Event.model");
 const Spot = require("../models/Spot.model");
 
@@ -49,6 +50,10 @@ router.get("/events", (req, res) => {
 router.get("/events/:eventId", (req, res) => {
   const { eventId } = req.params;
 
+  if (!mongoose.Types.ObjectId.isValid(eventId)) {
+    res.status(400).json({ message: 'Specified id is not valid' });
+    return;
+  }
 
   Event.findById(eventId)
     .then((foundEvent) => res.json(foundEvent)
@@ -61,6 +66,7 @@ router.put("/events/:eventId", (req, res) => {
   const { eventId } = req.params;
   const { name, description, price, startDate, endDate, startTime, endTime, signupRequired, signupLink } =
     req.body;
+    
 
   Event.findByIdAndUpdate(
     eventId,

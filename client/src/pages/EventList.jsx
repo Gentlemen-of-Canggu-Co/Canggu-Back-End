@@ -20,6 +20,7 @@ function EventList() {
 
   return (
 
+
 <div>
   
   <h1>Upcoming events in Canggus Spots</h1>
@@ -27,6 +28,7 @@ function EventList() {
   <EventListSeoText />
 
 </div>
+
 
   );
 }

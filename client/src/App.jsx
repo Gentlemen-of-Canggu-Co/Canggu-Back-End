@@ -2,14 +2,15 @@ import "./App.css";
 import { Routes, Route } from "react-router-dom";
 
 import HomePage from "./pages/HomePage";
-import SpotList from "./pages/SpotList"
+import SpotList from "./pages/SpotList";
 import SpotDetailsPage from "./pages/SpotDetailsPage";
 import EventList from "./pages/EventList";
-import EventDetailPage from "./pages/EventDetailPage"
+import EventDetailPage from "./pages/EventDetailPage";
 import LoginPage from "./pages/LoginPage";
 import AddEvent from "./pages/AddEvent";
 import EditEvent from "./pages/EditEvent";
 import EditSpot from "./pages/EditSpot";
+import ConsumableDetailsPage from "./pages/ConsumableDetailsPage";
 
 import Navbar from "./components/Navbar/Navbar";
 // import IsPrivate from "./components/IsPrivate/IsPrivate";
@@ -24,62 +25,26 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
 
-        <Route
-          path="/spots/:spotId"
-          element={
-              <SpotDetailsPage />
-          }
-        />
+        <Route path="/spots/:spotId" element={<SpotDetailsPage />} />
+
+        <Route path="/spots" element={<SpotList />} />
+
+        <Route path="/spots/create" element={<AddSpot />} />
+
+        <Route path="/events/:eventId" element={<EventDetailPage />} />
+
+        <Route path="/spots/:spotId/edit" element={<EditSpot />} />
+
+        <Route path="/events" element={<EventList />} />
+
+        <Route path="/events/:spotId/create" element={<AddEvent />} />
+
+        <Route path="/events/:eventId/edit" element={<EditEvent />} />
 
         <Route
-          path="/spots"
-          element={
-              <SpotList />
-          }
+          path="/consumable/:consumableId"
+          element={<ConsumableDetailsPage />}
         />
-
-<Route
-          path="/spots/create"
-          element={
-              <AddSpot />
-          }
-        />
-
-<Route
-          path="/events/:eventId"
-          element={
-              <EventDetailPage />
-          }
-        />
-
-<Route
-          path="/spots/:spotId/edit"
-          element={
-              <EditSpot />
-          }
-        />
-
-<Route
-          path="/events"
-          element={
-              <EventList />
-          }
-        />
-
-<Route
-          path="/events/:spotId/create"
-          element={
-            <AddEvent />
-          }
-        />
-
-<Route
-          path="/events/:eventId/edit"
-          element={
-            <EditEvent />
-          }
-        />
-
 
         {/* <Route
           path="/signup"
