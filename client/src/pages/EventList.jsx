@@ -13,6 +13,8 @@ function EventList() {
       .then((response) => setEvents(response.data));
   }, []);
 
+  let blueberries = 0;
+
   useEffect(() => {
     axios.get(`${API_URL}/api/spots`).then((result) => setSpots(result.data));
   }, []);
@@ -34,7 +36,11 @@ function EventList() {
               <Link to={`/events/${event._id}`}><p className="card-text">{event.name}</p></Link>
                 <p className="card-text">{event.date}</p>
                 {spots.map((spot) => {
-                  return <Link key={spot._id} to={`/spots/${spot._id}`}>{spot.name}</Link>;
+                  if(spot._id === event.owner) {
+                    return <Link key={spot._id} to={`/spots/${spot._id}`}>{spot.name}</Link>
+                  } else {
+                    return null
+                  }
                 })}
               </div>
             </div>

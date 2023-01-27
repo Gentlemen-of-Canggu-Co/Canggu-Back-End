@@ -76,7 +76,7 @@ useEffect(() => {
 {//Menu Component
 }
 <div>
-<img style={{width: "100vw"}} src={spot.menuImage} alt="pictogram" />
+{spot.menuImage && <img style={{width: "100vw"}} src={spot.menuImage} alt="menu_image" />}
 </div>
 
 {//Dropdown Component

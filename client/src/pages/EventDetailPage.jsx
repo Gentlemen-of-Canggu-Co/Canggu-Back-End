@@ -42,7 +42,7 @@ useEffect(() => {
 
 <div style={{display: "flex", flexDirection: "column"}}>
 <button>Add to Calendar</button>
-<button>See more Events</button>
+<Link to={'/events'}><button>See more Events</button></Link>
 </div>
 
 

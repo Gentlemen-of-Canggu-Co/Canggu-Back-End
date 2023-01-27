@@ -54,7 +54,7 @@ function SpotList(){
     {
         spots.map((spot) => {
             return <Link key={spot._id} to={`/spots/${spot._id}`}><div className="card" style={{width: "18rem;", borderStyle: "solid", borderColor: "black", borderWidth: "10px"}}>
-  <img className="card-img-top" src="https://dojobali.org/wp-content/uploads/2020/01/koast-web-images-03.jpg" alt="spot_view"/>
+  <img className="card-img-top" src={spot.spotImage} alt="spot_view"/>
   <div className="card-body">
     <h2 className="card-text">{spot.name}</h2>
     <div style={{display: "flex", justifyContent:"space-evenly"}}>
