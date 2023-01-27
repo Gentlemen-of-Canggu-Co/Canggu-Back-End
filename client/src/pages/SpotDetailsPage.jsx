@@ -20,6 +20,7 @@ useEffect(() => {
 
     //  IMG/Slider Component
 <div>
+<Link to={`/spots/${spot._id}/edit`}><button>Edit Spot</button></Link>
 <Link to={`/events/${spot._id}/create`}><button>Add Event</button></Link>
 
     <div>
