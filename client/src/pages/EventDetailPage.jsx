@@ -6,19 +6,27 @@ function EventDetailPage(){
 
 const API_URL= "http://localhost:5005"
 const {eventId} = useParams()
-console.log("ID", eventId)
 const [event, setEvent] = useState({})
+const [spot, setSpot] = useState({})
 
 useEffect(() => {
   axios.get(`${API_URL}/api/events/${eventId}`)
-    .then(response => setEvent(response.data))
-}, [eventId])
+    .then(response => setEvent(response.data)
+    )
+    
+}, [eventId]) 
 
+useEffect(() => {
+    axios.get(`${API_URL}/api/spots/${event.owner}`)
+      .then(response => setSpot(response.data)
+      )
+      
+  }, [event.owner])
 
 
     return(
-        <div>
-        <h1>{event.name} @ Spot Name</h1>
+       <div>
+        <h1>{event.name} @ {spot.name}</h1>
 
         <img style={{width: "100vw"}} src={event.eventImage} alt="eventpicture" />
 

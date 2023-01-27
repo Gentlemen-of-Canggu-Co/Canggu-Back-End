@@ -17,7 +17,7 @@ function HomePage() {
   <option value="Restaurant">Restaurant</option>
   <option value="Bar">Bar</option>
 </select>
-  <button type="submit" classNameName="btn btn-primary">Find your sweetspot!</button>
+  <button type="submit" className="btn btn-primary">Find your sweetspot!</button>
 </div>
 
 <div className="mb-3">
@@ -29,7 +29,7 @@ function HomePage() {
   <option value="Dinner">Late Night Snack</option>
   <option value="Dinner">Drinks</option>
 </select>
-  <button type="submit" classNameName="btn btn-primary">Find your real meal!</button>
+  <button type="submit" className="btn btn-primary">Find your real meal!</button>
 </div>
 
 <h2>#noFilter</h2>
