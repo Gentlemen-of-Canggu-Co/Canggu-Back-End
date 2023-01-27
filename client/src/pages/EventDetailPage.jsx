@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 
 function EventDetailPage(){
 
@@ -26,6 +26,9 @@ useEffect(() => {
 
     return(
        <div>
+
+<Link to={`/events/${event._id}/edit`}><button>Edit Event</button></Link>
+
         <h1>{event.name} @ {spot.name}</h1>
 
         <img style={{width: "100vw"}} src={event.eventImage} alt="eventpicture" />

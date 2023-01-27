@@ -7,6 +7,8 @@ import SpotDetailsPage from "./pages/SpotDetailsPage";
 import EventList from "./pages/EventList";
 import EventDetailPage from "./pages/EventDetailPage"
 import LoginPage from "./pages/LoginPage";
+import AddEvent from "./pages/AddEvent";
+import EditEvent from "./pages/EditEvent";
 
 import Navbar from "./components/Navbar/Navbar";
 // import IsPrivate from "./components/IsPrivate/IsPrivate";
@@ -47,6 +49,21 @@ function App() {
               <EventList />
           }
         />
+
+<Route
+          path="/events/:spotId/create"
+          element={
+            <AddEvent />
+          }
+        />
+
+<Route
+          path="/events/:eventId/edit"
+          element={
+            <EditEvent />
+          }
+        />
+
 
         {/* <Route
           path="/signup"
