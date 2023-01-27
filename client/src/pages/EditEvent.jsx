@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 
-function EditEvent(props){
+function EditEvent(){
 
 const navigate = useNavigate()
 const {eventId} = useParams()    
@@ -20,7 +20,7 @@ const [ownerId, setOwnerId] = useState("")
 const handleSubmit = (e) => {
     e.preventDefault()
 
-    const newEvent = {name, description, price, date, signupRequired, signupLink, eventImage}
+    const newEvent = {name, description, price, date, signupRequired, signupLink, eventImage, ownerId}
 
     axios.post(`${API_URL}/api/events`, newEvent)
         .then(() => {
@@ -40,7 +40,7 @@ useEffect(() => {
         setSignupRequired(response.data.signupRequired)
         setSignupLink(response.data.signupLink)
         setEventImage(response.data.eventImage)
-        setOwnerId(response.data.ownerId)
+        setOwnerId(response.data._id)
       }
       )
       
@@ -73,7 +73,9 @@ useEffect(() => {
         <br/>
         <label>Link to Signup</label>
         <input type="text" name="signupLink" value={signupLink} onChange={(event)=> setSignupLink(event.target.value)} />
-    
+        <br/>
+        <label>DONT CHANGE DUDE</label>
+        <input type="text" name="ownerId" value={ownerId} onChange={(event)=> setOwnerId(event.target.value)} />
         <button type="submit">Edit Event</button>
     </form>
   </div>
