@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams, Link } from "react-router-dom";
+import 'add-to-calendar-button';
 import DeleteEvent from "../components/DeleteEvent";
 
 function EventDetailPage(){
@@ -42,9 +43,23 @@ useEffect(() => {
         <p>{event.description}</p>
 
 <div style={{display: "flex", flexDirection: "column"}}>
-<button>Add to Calendar</button>
+
+
+<button>See more Events</button>
+<add-to-calendar-button
+  name={event.name}
+  options="'Google'"
+  location={spot.name}
+  startDate={event.date}
+  endDate={event.date}
+  startTime={event.date}
+  endTime={event.date}
+  // timeZone="America/Los_Angeles"
+></add-to-calendar-button>
+
 <Link to={'/events'}><button>See more Events</button></Link>
 <DeleteEvent eventId={eventId}/>
+
 </div>
 
 
