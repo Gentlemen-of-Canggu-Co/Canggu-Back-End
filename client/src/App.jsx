@@ -13,6 +13,7 @@ import EditEvent from "./pages/EditEvent";
 import Navbar from "./components/Navbar/Navbar";
 // import IsPrivate from "./components/IsPrivate/IsPrivate";
 import IsAnon from "./components/IsAnon/IsAnon";
+import AddSpot from "./pages/AddSpot";
 
 function App() {
   return (
@@ -33,6 +34,13 @@ function App() {
           path="/spots"
           element={
               <SpotList />
+          }
+        />
+
+<Route
+          path="/spots/create"
+          element={
+              <AddSpot />
           }
         />
 
