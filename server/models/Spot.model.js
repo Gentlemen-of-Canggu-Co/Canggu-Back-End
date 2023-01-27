@@ -76,8 +76,8 @@ const spotSchema = new Schema(
     hasSockets: {
         type: Boolean
     },
-    events: [{ type: Schema.Types.ObjectId, ref: "Events" }],
-    consumables: [{ type: Schema.Types.ObjectId, ref: "Consumables" }]
+    events: [{ type: Schema.Types.ObjectId, ref: "Event" }],
+    consumables: [{ type: Schema.Types.ObjectId, ref: "Consumable" }]
 }
 );
 
