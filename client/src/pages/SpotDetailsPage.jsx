@@ -2,8 +2,14 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import AddConsumable from "../components/AddConsumable";
 import { useParams, Link } from "react-router-dom";
-import { InstagramEmbed } from 'react-social-media-embed';
-
+import ImgSlider from "../components/SpotDetailsPage/ImgSlider";
+import Overview from "../components/SpotDetailsPage/Overview";
+import Ratings from "../components/SpotDetailsPage/Ratings";
+import Pictograms from "../components/SpotDetailsPage/Pictograms";
+import Menu from "../components/SpotDetailsPage/Menu";
+import Accordion from "../components/SpotDetailsPage/Accordion";
+import Map from "../components/SpotDetailsPage/Map";
+import Description from "../components/SpotDetailsPage/Description";
 
 function SpotDetailsPage() {
 const API_URL= "http://localhost:5005"
@@ -14,65 +20,36 @@ useEffect(() => {
   axios.get(`${API_URL}/api/spots/${spotId}`)
     .then(response => setSpot(response.data))
 }, [spotId])
-
+// console.log("SPOT EVENTS===>", console.log(Array.isArray(spot.events)))
   return (
 
-    //  IMG/Slider Component
 <div>
-<Link to={`/events/${spot._id}/create`}><button>Add Event</button></Link>
 
-    <div>
-    <img src={spot.spotImage} alt="cafe_image"/>
-    </div>
+<ImgSlider spot={spot}/>
+<Overview spot={spot}/>
+<Ratings spot={spot}/>
+<Pictograms spot={spot}/>
+<Menu spot={spot}/>
+<Accordion spot={spot}/>
+<Map spot={spot}/>
+<Description spot={spot}/>
 
 
-    <div>
+{spot.events && spot.events.map((singleEvent) =>{
+  return        <div>
 
-{// Overview Component
-}        
-<div style={{display: "flex", justifyContent: "space-between"}}>
-<h1>{spot.name}</h1>
-            <a href="#">See menu</a>
+<Link to={`/events/${singleEvent._id}/edit`}><button>Edit singleEvent</button></Link>
+
+        <h1>{singleEvent.name} @ {spot.name}</h1>
+
+        <img style={{width: "100vw"}} src={singleEvent.eventImage} alt="singleEventpicture" />
+
+        <div style={{display: "flex", justifyContent: "space-evenly"}}>
+            <p>{singleEvent.date}</p>
+            <p>{singleEvent.price}k IDR</p>
         </div>
 
-        <div style={{display: "flex", justifyContent: "space-between", borderColor: "black", borderStyle: "solid"}}>
-            <p>{spot.tagline}</p>
-            <p>Rating: {spot.overallRating}</p>
-        </div>
-
-    </div>
-
-{// Ratings Component
-}    <div style={{display: "flex", justifyContent: "space-between"}}>
-
-      <div >
-        <p>{spot.foodRating}</p>
-        <p>Food</p>
-      </div>   
-
-    <div>
-    <p>{spot.coffeeRating}</p>
-        <p>Coffee</p> 
-      </div> 
-      
-    <div>
-    <p>{spot.ambienceRating}</p>
-        <p>Ambience</p>   
-      </div>    
-
-    </div>
-
-{//Pictogram Slider Component
-} 
-<div>
-<img style={{width: "50px"}} src="https://chemicalsinourlife.echa.europa.eu/documents/2934490/2940794/PICTOGRAM.png" alt="pictogram" />
-<img style={{width: "50px"}} src="https://chemicalsinourlife.echa.europa.eu/documents/2934490/2940794/PICTOGRAM.png" alt="pictogram" />
-<img style={{width: "50px"}} src="https://chemicalsinourlife.echa.europa.eu/documents/2934490/2940794/PICTOGRAM.png" alt="pictogram" />
-<img style={{width: "50px"}} src="https://chemicalsinourlife.echa.europa.eu/documents/2934490/2940794/PICTOGRAM.png" alt="pictogram" />
-<img style={{width: "50px"}} src="https://chemicalsinourlife.echa.europa.eu/documents/2934490/2940794/PICTOGRAM.png" alt="pictogram" />
-<img style={{width: "50px"}} src="https://chemicalsinourlife.echa.europa.eu/documents/2934490/2940794/PICTOGRAM.png" alt="pictogram" />
-<img style={{width: "50px"}} src="https://chemicalsinourlife.echa.europa.eu/documents/2934490/2940794/PICTOGRAM.png" alt="pictogram" />
-</div>
+        <p>{singleEvent.description}</p>
 
 
 {//Menu Component
@@ -85,36 +62,38 @@ useEffect(() => {
 }<button className="accordion">Opening Times & Contact</button>
 <div className="panel">
   <p>Opening times: {spot.openingTimes}</p>
+
+<div style={{display: "flex", flexDirection: "column"}}>
+<button>Add to Calendar</button>
+<button>See more Events</button>
+
 </div>
 
+        </div>
+})}
 
 
+{spot.consumables && spot.consumables.map((singleConsumable) =>{
+  return  <div>
 
-{//Map Component
-}
+        <h1>{singleConsumable.name}</h1>
 
-<div
-      dangerouslySetInnerHTML={{__html: spot.location}}
-    />
+        <img style={{width: "100vw"}} src={singleConsumable.image} alt="singleEventpicture" />
 
+        <div style={{display: "flex", justifyContent: "space-evenly"}}>
+            <p>{singleConsumable.tagline}</p>
+            <p>{singleConsumable.price}k IDR</p>
+            <p>{singleConsumable.rating}</p>
 
-{//Description Component
-}
-
-<h2>Description</h2>
-<p>{spot.description}</p>
-
-<div style={{ display: 'flex', justifyContent: 'center' }}>
-  <InstagramEmbed url="https://www.instagram.com/p/CneGaTKgVTx/" width={328} />
-</div>
+        </div>
 
 
+        </div>
+})}
 <AddConsumable ownerId={spotId}/>
 
+
 </div>
-
-
-
 
   );
 }

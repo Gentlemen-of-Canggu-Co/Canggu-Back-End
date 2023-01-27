@@ -20,9 +20,9 @@ const [ownerId, setOwnerId] = useState("")
 const handleSubmit = (e) => {
     e.preventDefault()
 
-    const newEvent = {name, description, price, date, signupRequired, signupLink, eventImage, ownerId}
+    const editedEvent = {name, description, price, date, signupRequired, signupLink, eventImage, ownerId}
 
-    axios.post(`${API_URL}/api/events`, newEvent)
+    axios.put(`${API_URL}/api/events/${eventId}`, editedEvent)
         .then(() => {
             navigate("/");
         })

@@ -23,8 +23,8 @@ router.get('/spots/:spotId', (req, res) => {
     const {spotId} = req.params;
     console.log(spotId);
     Spot.findById(spotId)
-    // .populate('consumables')
-    // .populate('events')
+    .populate('consumables')
+    .populate('events')
     .then(foundSpot => res.json(foundSpot))
     .catch(err => console.log(err)) 
 
