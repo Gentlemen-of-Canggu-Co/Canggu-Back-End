@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import AddConsumable from "../components/AddConsumable";
 
 function SpotDetailsPage() {
-
 const API_URL= "http://localhost:5005"
 const {spotId} = useParams()
 console.log("ID", spotId)
@@ -102,6 +102,8 @@ useEffect(() => {
 <h2>Description</h2>
 <p>{spot.description}</p>
 
+
+<AddConsumable ownerId={spotId}/>
 
 </div>
 
