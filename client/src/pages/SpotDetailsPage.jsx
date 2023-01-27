@@ -51,9 +51,22 @@ useEffect(() => {
 
         <p>{singleEvent.description}</p>
 
+
+{//Menu Component
+}
+<div>
+{spot.menuImage && <img style={{width: "100vw"}} src={spot.menuImage} alt="menu_image" />}
+</div>
+
+{//Dropdown Component
+}<button className="accordion">Opening Times & Contact</button>
+<div className="panel">
+  <p>Opening times: {spot.openingTimes}</p>
+
 <div style={{display: "flex", flexDirection: "column"}}>
 <button>Add to Calendar</button>
 <button>See more Events</button>
+
 </div>
 
         </div>
