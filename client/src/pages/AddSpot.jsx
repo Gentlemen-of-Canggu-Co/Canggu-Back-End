@@ -14,11 +14,11 @@ function AddSpot(){
     const [spotImage, setSpotImage] = useState("")
     const [priceLevel, setPriceLevel] = useState("")
     const [description, setDescription] = useState("")
-    const [overallRating, setOverallRating] = useState()
-    const [coffeeRating, setCoffeeRating] = useState()
-    const [drinkRating, setDrinkRating] = useState()
-    const [foodRating, setFoodRating] = useState()
-    const [ambienceRating, setAmbienceRating] = useState()
+    const [overallRating, setOverallRating] = useState(null)
+    const [coffeeRating, setCoffeeRating] = useState(null)
+    const [drinkRating, setDrinkRating] = useState(null)
+    const [foodRating, setFoodRating] = useState(null)
+    const [ambienceRating, setAmbienceRating] = useState(null)
     const [veganFriendly, setVeganFriendly] = useState(false)
     const [hasPool, setHasPool] = useState(false)
     const [coWorkingFriendly, setCoWorkingFriendly] = useState(false)
@@ -145,25 +145,25 @@ function AddSpot(){
             <input type="number" name="ambienceRating" value={ambienceRating} onChange={(event)=> setAmbienceRating(Number(event.target.value))} />
             <br/>
             <label>Is it vegan friendly?</label>
-            <input type="checkbox" name="veganFriendly" value={veganFriendly} onChange={(event)=> setVeganFriendly(event.target.value)} />
+            <input type="checkbox" name="veganFriendly" value={veganFriendly} onChange={(event)=> setVeganFriendly(event.target.checked)} />
             <br/>
             <label>Does it have a pool?</label>
-            <input type="checkbox" name="hasPool" value={hasPool} onChange={(event)=> setHasPool(event.target.value)} />
+            <input type="checkbox" name="hasPool" value={hasPool} onChange={(event)=> setHasPool(event.target.checked)} />
             <br/>
             <label>Is it Coworking friendly?</label>
-            <input type="checkbox" name="coWorkingFriendly" value={coWorkingFriendly} onChange={(event)=> setCoWorkingFriendly(event.target.value)} />
+            <input type="checkbox" name="coWorkingFriendly" value={coWorkingFriendly} onChange={(event)=> setCoWorkingFriendly(event.target.checked)} />
             <br/>
             <label>Is it suited for Dates?</label>
-            <input type="checkbox" name="dateFriendly" value={dateFriendly} onChange={(event) => setDateFriendly(event.target.value)} />
+            <input type="checkbox" name="dateFriendly" value={dateFriendly} onChange={(event) => setDateFriendly(event.target.checked)} />
             <br/>
             <label>Does it have outside Seating?</label>
-            <input type="checkbox" name="outsideSeating" value={outsideSeating} onChange={(event)=> setOutsideSeating(event.target.value)} />
+            <input type="checkbox" name="outsideSeating" value={outsideSeating} onChange={(event)=> setOutsideSeating(event.target.checked)} />
             <br/>
             <label>How fast is the Wifi?</label>
             <input type="number" name="wifiSpeed" value={wifiSpeed} onChange={(event)=> setWifiSpeed(Number(event.target.value))} />
             <br/>
             <label>Are sockets available?</label>
-            <input type="checkbox" name="hasSockets" value={hasSockets} onChange={(event)=> setHasSockets(event.target.value)} />
+            <input type="checkbox" name="hasSockets" value={hasSockets} onChange={(event)=> setHasSockets(event.target.checked)} />
             <br/>
             
             <button type="submit">Add new Spot</button>
