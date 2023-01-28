@@ -11,13 +11,47 @@ function Pictograms(props){
     const {spot} = props
 
     return(
-<div>
-{spot.outsideSeating && <DeckIcon fontSize='large'/>}
-{spot.hasSockets && <PowerIcon fontSize='large'/>}
-{spot.veganFriendly && <LocalFloristIcon fontSize='large'/>}
-{spot.dateFriendly && <VolunteerActivismIcon fontSize='large'/>}
-{spot.hasPool && <PoolIcon fontSize='large'/>}
-{spot.coWorkingFriendly && <WorkOutlineIcon fontSize='large'/>}
+<div style={{display: "flex", flexWrap: "wrap", flexDirection: "row", justifyContent: "space-between"}}>
+
+
+{spot.outsideSeating && 
+<div style={{width: "30vw"}}>
+<DeckIcon fontSize='large'/>
+<p>Outside Seating</p>
+</div>}
+
+
+{spot.hasSockets && 
+<div style={{width: "30vw"}}>
+<PowerIcon fontSize='large'/>
+<p>Offers sockets</p>
+</div>}
+
+{spot.veganFriendly && 
+<div style={{width: "30vw"}}>
+<LocalFloristIcon fontSize='large'/>
+<p>Vegan options</p>
+</div>}
+
+{spot.dateFriendly && 
+<div style={{width: "30vw"}}>
+<VolunteerActivismIcon fontSize='large'/>
+<p>Good for dates</p>
+</div>}
+
+{spot.hasPool && 
+<div style={{width: "30vw"}}>
+<PoolIcon fontSize='large'/>
+<p>Has a pool</p>
+</div>}
+
+{spot.coWorkingFriendly && 
+<div style={{width: "30vw"}}>
+<WorkOutlineIcon fontSize='large'/>
+<p>Coworking spot</p>
+</div>}
+
+
 </div>
 
    )
