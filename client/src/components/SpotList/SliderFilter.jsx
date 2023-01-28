@@ -30,8 +30,10 @@ const [foodFilter, setFoodFilter] = useState(null)
       const handleSubmit = (e) => {
         e.preventDefault()
         setFilteredSpots(spots)
+        console.log("FILTERED SPOTS===>", filteredSpots)
+        console.log("SPOTS===>", spots)
         const filteredList = filteredSpots.filter((spot) => spot.coffeeRating > coffeeFilter && spot.ambienceRating > ambienceFilter && spot.overallRating > overallFilter && spot.foodRating > foodFilter)
-        console.log(filteredList)
+        console.log("FILTERED LIST===>", filteredList)
         setFilteredSpots(filteredList)
     }  
 
