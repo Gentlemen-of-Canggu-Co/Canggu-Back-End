@@ -11,7 +11,7 @@ const {spot} = props
     <Link to={`/events/${spot._id}/create`}><button>Add Event</button></Link>
 
     <div>
-        <img src={spot.spotImage} alt="cafe_image"/>
+        <img style={{width: "100vw"}} src={spot.spotImage} alt="cafe_image"/>
     </div>
 
 </div>
