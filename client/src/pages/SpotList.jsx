@@ -38,7 +38,7 @@ function SpotList(){
 
 <SliderFilter spots={spots} setFilteredSpots={setFilteredSpots} />
 
-</div>
+</div> 
 
 
 
