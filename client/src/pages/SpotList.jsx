@@ -32,7 +32,7 @@ function SpotList(){
         <div>
         <h2>Sort by rating of...</h2>
 
-<SliderFilter spots={spots} setSpots={setSpots} filteredSpots={filteredSpots} setFilteredSpots={setFilteredSpots} />
+<SliderFilter spots={spots} setFilteredSpots={setFilteredSpots} />
 
 </div>
 
