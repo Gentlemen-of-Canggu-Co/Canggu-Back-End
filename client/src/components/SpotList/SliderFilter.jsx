@@ -2,7 +2,7 @@ import Slider from '@mui/material/Slider';
 import { useState } from 'react';
 function SliderFilter(props){
 
-const {filteredSpots, setFilteredSpots, spots, setSpots} = props   
+const {setFilteredSpots, spots} = props   
 const [coffeeFilter, setCoffeeFilter] = useState(null)
 const [overallFilter, setOverallFilter] = useState(null)
 const [ambienceFilter, setAmbienceFilter] = useState(null)
@@ -29,12 +29,11 @@ const [foodFilter, setFoodFilter] = useState(null)
 
       const handleSubmit = (e) => {
         e.preventDefault()
-        setFilteredSpots(spots)
-        console.log("FILTERED SPOTS===>", filteredSpots)
-        console.log("SPOTS===>", spots)
-        const filteredList = filteredSpots.filter((spot) => spot.coffeeRating > coffeeFilter && spot.ambienceRating > ambienceFilter && spot.overallRating > overallFilter && spot.foodRating > foodFilter)
-        console.log("FILTERED LIST===>", filteredList)
-        setFilteredSpots(filteredList)
+
+
+        const filteredList = spots.filter((spot) => spot.coffeeRating > coffeeFilter && spot.ambienceRating > ambienceFilter && spot.overallRating > overallFilter && spot.foodRating > foodFilter)
+
+setFilteredSpots(filteredList)
     }  
 
     return(
