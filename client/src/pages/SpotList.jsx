@@ -2,6 +2,15 @@ import {useState, useEffect} from "react"
 import axios from 'axios';
 import { Link } from "react-router-dom";
 import SliderFilter from "../components/SpotList/SliderFilter";
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
+
+
 
 
 function SpotList(){
@@ -9,11 +18,6 @@ function SpotList(){
     const [spots, setSpots] = useState([])
     const [filteredSpots, setFilteredSpots] = useState([])
     const API_URL= "http://localhost:5005"
-    
-    // useEffect(() => {
-    //     axios.get(`${API_URL}/api/spots`)
-    //         .then(response => setSpots(response.data))
-    // }, [])
 
     useEffect(() => {
         axios.get(`${API_URL}/api/spots`)
@@ -30,7 +34,7 @@ function SpotList(){
         <p>Find your perfect spot, based on what matters to you.</p>
 
         <div>
-        <h2>Sort by rating of...</h2>
+
 
 <SliderFilter spots={spots} setFilteredSpots={setFilteredSpots} />
 
@@ -39,32 +43,76 @@ function SpotList(){
 
 
     {filteredSpots.map((spot) => {
-            return <Link key={spot._id} to={`/spots/${spot._id}`}><div className="card" style={{width: "18rem", borderStyle: "solid", borderColor: "black", borderWidth: "10px"}}>
-  <img className="card-img-top" src={spot.spotImage} alt="spot_view"/>
-  <div className="card-body">
-    <h2 className="card-text">{spot.name}</h2>
-    <div style={{display: "flex", justifyContent:"space-evenly"}}>
+            return <Card sx={{ maxWidth: "100vw" }}>
+            <Box sx={{ position: 'relative' }}>
+
+      <CardMedia
+        sx={{ height: 220 }}
+        image={spot.spotImage}
+        title="green iguana"
+      />
+
+<Box
+      sx={{
+        position: 'absolute',
+        bottom: 0,
+        left: 0,
+        width: '100%',
+        bgcolor: 'rgba(0, 0, 0, 0.54)',
+        color: 'white',
+        padding: '10px',
+      }}
+    >
+    <div style={{display: "flex", justifyContent: "space-between", alignItems: "center"}}>
     <div>
-        <p>{spot.overallRating}</p>
-        <p>Overall</p>
-    </div>
-    <div>
-        <p>{spot.coffeeRating}</p>
-        <p>Coffee</p>
-    </div>
-    <div>
-        <p>{spot.foodRating}</p>
-        <p>Food</p>
-    </div>
-    <div>
-        <p>{spot.ambienceRating}</p>
-        <p>Ambience</p>
-    </div>
+      <Typography variant="h5">{spot.name}</Typography>
+      <Typography variant="body2"><i>{spot.tagline}</i></Typography>
     </div>
 
-  </div>
+
+    <p style={{fontSize: "2rem", alignContent:"center", width: "30vw",border: "solid", borderRadius: "50%"}}>        
+{spot.overallRating}</p>
+    {/* <p>Overall</p> */}
+
 </div>
-</Link>
+    </Box>
+  </Box>
+
+      <CardContent>
+
+
+        <Typography variant="body2" color="text.secondary">   
+<div style={{display: "flex"}}>
+
+<div style={{display: "flex", width:"100vw"}}>
+
+    <div style={{display: "flex", justifyContent:"space-evenly", width: "70vw"}}>
+
+        <div>
+        <p>{spot.coffeeRating}</p>
+        <p>Coffee</p>
+        </div>
+
+        <div>
+        <p>{spot.foodRating}</p>
+        <p>Food</p>
+        </div>
+
+        <div>
+        <p>{spot.ambienceRating}</p>
+        <p>Ambience</p>
+        </div>
+    </div>
+    <CardActions style={{width: "20vw"}}>
+        <Link key={spot._id} to={`/spots/${spot._id}`}><Button variant="contained">See details</Button></Link>    
+      </CardActions>
+      </div>
+
+</div>
+    </Typography>
+      </CardContent>
+
+    </Card>
         })
     }
 

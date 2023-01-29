@@ -1,5 +1,12 @@
 import Slider from '@mui/material/Slider';
 import { useState } from 'react';
+import Button from '@mui/material/Button';
+import Accordion from '@mui/material/Accordion';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import Typography from '@mui/material/Typography';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+
 function SliderFilter(props){
 
 const {setFilteredSpots, spots} = props   
@@ -38,13 +45,33 @@ setFilteredSpots(filteredList)
 
     return(
 
-        <div>
+
+
+
+
+<div>
+      <Accordion>
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel1a-content"
+          id="panel1a-header"
+        >
+          
+          <Typography>Filter results</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Typography>
+          <div>
 <form onSubmit={handleSubmit}>
         <div style={{display: "flex", alignItems: "center", justifyContent: "space-evenly"}}>
         <Slider
 style={{width: "60vw"}}
   aria-label="Overall"
   defaultValue={1}
+  sx={{
+    width: 300,
+    color: 'success.main',
+  }}
 //   getAriaValueText={valuetext}
   valueLabelDisplay="auto"
   value={overallFilter}
@@ -71,6 +98,10 @@ style={{width: "60vw"}}
   onChange={(event) => setFoodFilter(event.target.value)}
   marks={marks}
   min={1}
+  sx={{
+    width: 300,
+    color: 'success.main',
+  }}
   max={100}
 />
 <p>Food</p>
@@ -88,6 +119,10 @@ style={{width: "60vw"}}
   value={coffeeFilter}
   onChange={(event) => setCoffeeFilter(event.target.value)}
   marks={marks}
+  sx={{
+    width: 300,
+    color: 'success.main',
+  }}
   min={1}
   max={100}
 />
@@ -100,21 +135,39 @@ style={{width: "60vw"}}
 style={{width: "60vw"}}
   aria-label="Ambience"
   defaultValue={1}
-//   getAriaValueText={valuetext}
-name="AbienceRating"
+  name="AbienceRating"
   valueLabelDisplay="auto"
   step={1}
+  sx={{
+    width: 300,
+    color: 'success.main',
+  }}
   value={ambienceFilter}
   onChange={(event) => setAmbienceFilter(event.target.value)}
   marks={marks}
+  
   min={1}
   max={100}
 />
 <p>Ambience</p>
 </div>
-<button type="submit">Filter that shit</button>
+<Button type="submit" variant="contained">Show results</Button>
 </form>
         </div>
+          </Typography>
+        </AccordionDetails>
+      </Accordion>
+      
+    </div>
+
+
+
+
+
+
+
+
+        
     )
 }
 
