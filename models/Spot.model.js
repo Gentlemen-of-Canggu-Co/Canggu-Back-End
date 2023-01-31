@@ -22,7 +22,7 @@ const spotSchema = new Schema(
     },
     location: {
         type: String,
-        // required: true
+        required: true
     },
     openingTimes: { // Lets make this a dropdown?
         type: String
