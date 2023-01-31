@@ -1,6 +1,6 @@
 {
   "name": "Canggu-server",
-  // "main": "./server.js",
+  "main": "./server.js",
   "version": "0.1.0",
   "private": true,
   "scripts": {
