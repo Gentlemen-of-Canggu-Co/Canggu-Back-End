@@ -1,5 +1,6 @@
 {
   "name": "Canggu-server",
+  // "main": "./server.js",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -8,7 +9,6 @@
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
-    "main": "./server.js",
     "body-parser": "^1.20.1",
     "cloudinary": "^1.33.0",
     "cookie-parser": "^1.4.6",
