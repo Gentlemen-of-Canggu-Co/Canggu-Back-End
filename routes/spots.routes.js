@@ -9,6 +9,7 @@ router.post('/spots', (req, res) => {
       .then(response => res.json(response))
       .catch(err => res.json(err));
 });
+
 // list spots
 router.get('/spots', (req, res) => {
 

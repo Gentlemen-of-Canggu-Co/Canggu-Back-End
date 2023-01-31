@@ -32,7 +32,6 @@ const spotSchema = new Schema(
     },
     spotImage: {
         type: String,
-        default: "https://dojobali.org/wp-content/uploads/2020/01/koast-web-images-03.jpg",
         required: true
     },
     priceLevel: {
