@@ -4,6 +4,7 @@ const Consumable = require("../models/Consumable.model");
 const Spot = require("../models/Spot.model");
 const fileUploader = require("../config/cloudinary.config");
 
+
 router.post("/consumable", (req, res) => {
   const { name, tagline, price, rating, image, ownerId } = req.body;
 
@@ -16,6 +17,7 @@ router.post("/consumable", (req, res) => {
     .then((response) => res.json(response))
     .catch((err) => res.status(err));
 });
+
 
 router.post("/upload", fileUploader.single("image"), (req, res, next) => {
   // console.log("file is: ", req.file)

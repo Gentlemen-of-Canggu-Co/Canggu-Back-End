@@ -4,8 +4,6 @@ const mongoose = require("mongoose");
 const Event = require("../models/Event.model");
 const Spot = require("../models/Spot.model");
 const fileUploader = require("../config/cloudinary.config");
-// const cloudinary = require('../utils/cloudinary')
-
 
 // create event
 router.post("/events", (req, res) => {
@@ -22,11 +20,6 @@ router.post("/events", (req, res) => {
     eventImage,
     ownerId,
   } = req.body;
-
-  // try{
-
-  //   if(eventImage)
-  // }
 
   Event.create({
     name,
@@ -49,7 +42,6 @@ router.post("/events", (req, res) => {
     .then((response) => res.json(response))
     .catch((err) => res.status(err));
 });
-
 
 router.post("/upload", fileUploader.single("eventImage"), (req, res, next) => {
   // console.log("file is: ", req.file)
