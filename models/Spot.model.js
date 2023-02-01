@@ -22,7 +22,7 @@ const spotSchema = new Schema(
     },
     location: {
         type: String,
-        required: true
+        // required: true
     },
     openingTimes: { // Lets make this a dropdown?
         type: String
@@ -32,7 +32,7 @@ const spotSchema = new Schema(
     },
     spotImage: {
         type: String,
-        required: true
+        // required: true
     },
     priceLevel: {
         type: String,
