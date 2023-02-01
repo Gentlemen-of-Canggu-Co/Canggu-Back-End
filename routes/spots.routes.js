@@ -1,6 +1,5 @@
 const router = require("express").Router();
 const { isAuthenticated } = require("../middleware/jwt.middleware.js");
-const fileUploader = require("../config/cloudinary.config");
 
 const Spot = require("../models/Spot.model");
 // create spot
@@ -59,17 +58,6 @@ router.post("/spots", (req, res) => {
       console.log(response)
       res.json(response)})
     .catch((err) => res.json(err));
-});
-
-router.post("/upload", fileUploader.single("spotImage"), (req, res, next) => {
-  // console.log("file is: ", req.file)
-
-  if (!req.file) {
-    next(new Error("No file uploaded!"));
-    return;
-  }
-
-  res.json({ fileUrl: req.file.path });
 });
 
 // list spots
