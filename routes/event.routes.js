@@ -10,9 +10,9 @@ router.post("/events", (req, res) => {
     name,
     description,
     price,
-    startDate, 
-    endDate, 
-    startTime, 
+    startDate,
+    endDate,
+    startTime,
     endTime,
     signupRequired,
     signupLink,
@@ -24,9 +24,9 @@ router.post("/events", (req, res) => {
     name,
     description,
     price,
-    startDate, 
-    endDate, 
-    startTime, 
+    startDate,
+    endDate,
+    startTime,
     endTime,
     signupRequired,
     signupLink,
@@ -42,7 +42,6 @@ router.post("/events", (req, res) => {
     .catch((err) => res.status(err));
 });
 
-
 // get all events
 router.get("/events", (req, res) => {
   Event.find()
@@ -55,26 +54,45 @@ router.get("/events/:eventId", (req, res) => {
   const { eventId } = req.params;
 
   if (!mongoose.Types.ObjectId.isValid(eventId)) {
-    res.status(400).json({ message: 'Specified id is not valid' });
+    res.status(400).json({ message: "Specified id is not valid" });
     return;
   }
 
   Event.findById(eventId)
-    .then((foundEvent) => res.json(foundEvent)
-    )
+    .then((foundEvent) => res.json(foundEvent))
     .catch((err) => console.log(err));
 });
 
 // edit particular event
 router.put("/events/:eventId", (req, res) => {
   const { eventId } = req.params;
-  const { name, description, price, startDate, endDate, startTime, endTime, signupRequired, signupLink } =
-    req.body;
-    
+  const {
+    name,
+    description,
+    price,
+    startDate,
+    endDate,
+    startTime,
+    endTime,
+    signupRequired,
+    signupLink,
+    eventImage
+  } = req.body;
 
   Event.findByIdAndUpdate(
     eventId,
-    { name, description, price, startDate, endDate, startTime, endTime, signupRequired, signupLink },
+    {
+      name,
+      description,
+      price,
+      startDate,
+      endDate,
+      startTime,
+      endTime,
+      signupRequired,
+      signupLink,
+      eventImage
+    },
     { new: true }
   )
     .then((updatedEvent) => res.json(updatedEvent))
