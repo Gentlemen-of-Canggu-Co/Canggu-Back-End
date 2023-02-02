@@ -10,8 +10,7 @@ const eventSchema = new Schema(
         type: String,
     },
     price: {
-        type: Number,
-        required: true
+        type: Number
     },
     startDate: {
         type: String, // YYYY-MM-DD
