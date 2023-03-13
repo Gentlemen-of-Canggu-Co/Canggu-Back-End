@@ -28,6 +28,9 @@ app.use("/api", spotRoutes);
 const consumableRoutes = require("./routes/consumable.routes");
 app.use("/api", consumableRoutes);
 
+const toplistRoutes = require("./routes/toplist.routes")
+app.use("/api", toplistRoutes)
+
 const authRoutes = require("./routes/auth.routes");
 app.use("/auth", authRoutes);
 
