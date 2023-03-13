@@ -1,19 +1,21 @@
-About Chunks of Canggu
+
+**About Chunks of Canggu**
 Chunks of Canggu is a web app that helps users to make their choice of what cafe, restaurant or bar to visit when in Canggu, Bali. Additionally, it gives an overview of events that take place in the spots that are available on the App
 
-Backend Stack
+**Backend Stack**
 MERN stack
 REST API backend using Node & Express
 
 CRUD operations managed with Mongoose.
 
-Models
+**Models**
 User (=> only 2 Admins, User model is not planned to take new entries)
 Spot
 Event
 Consumable
 
-Routes
+
+**Routes**
 Auth
 POST /auth/signup — Handling signup form data
 POST /auth/login — Handling login form data
