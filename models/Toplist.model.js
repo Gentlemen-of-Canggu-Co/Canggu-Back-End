@@ -6,6 +6,10 @@ const toplistSchema = new Schema(
         type: String,
         required: true
     },
+    heroImage: {
+        type: String,
+        required: true
+    },
     introText: {
         type: String,
     },
