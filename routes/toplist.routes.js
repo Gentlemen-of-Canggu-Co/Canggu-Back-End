@@ -6,6 +6,7 @@ const Toplist = require("../models/Toplist.model")
 //create new toplist
 
 router.post("/toplists", (req, res) => {
+    console.log(req.body)
     const {
         title,
         introText,
@@ -84,7 +85,6 @@ router.post("/toplists", (req, res) => {
 
 //get all toplists
 router.get("/toplists", (req, res) => {
-    console.log("All good in here!")
     Toplist.find()
         .then((allToplists) => res.status(200).json(allToplists))
         .catch((err) => console.error(err))
