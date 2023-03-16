@@ -10,6 +10,7 @@ router.post("/toplists", (req, res) => {
     const {
         title,
         introText,
+        heroImage,
         firstPlaceSpotId,
         firstPlaceConsumableId,
         firstPlaceText,
@@ -45,6 +46,7 @@ router.post("/toplists", (req, res) => {
     Toplist.create({
         title,
         introText,
+        heroImage,
         firstPlaceSpotId,
         firstPlaceConsumableId,
         firstPlaceText,
@@ -106,6 +108,7 @@ router.put("/toplists/:toplistId", (req, res) => {
     const {
         title,
         introText,
+        heroImage,
         firstPlaceSpotId,
         firstPlaceConsumableId,
         firstPlaceText,
@@ -143,6 +146,7 @@ router.put("/toplists/:toplistId", (req, res) => {
         {
             title,
         introText,
+        heroImage,
         firstPlaceSpotId,
         firstPlaceConsumableId,
         firstPlaceText,
