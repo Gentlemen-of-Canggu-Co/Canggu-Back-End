@@ -13,96 +13,427 @@ const toplistSchema = new Schema(
     introText: {
         type: String,
     },
-    firstPlaceSpotId: {
+    firstPlaceId: {
         type: String
     },
-    firstPlaceConsumableId: {
+    firstPlaceImage: {
         type: String
     },
-    firstPlaceText: {
+    firstPlaceName:{
         type: String
     },
-    secondPlaceSpotId: {
+    firstPlaceTagline:{
         type: String
     },
-    secondPlaceConsumableId: {
+    firstPlaceDescription:{
         type: String
     },
-    secondPlaceText: {
+    firstPlacePriceLevel:{
         type: String
     },
-    thirdPlaceSpotId: {
+    firstPlaceCoffeeRating:{
+        type: Number
+    },
+    firstPlaceFoodRating:{
+        type: Number
+    },
+    firstPlaceAmbienceRating:{
+        type: Number
+    },
+    firstPlaceConsumableTitle:{
         type: String
     },
-    thirdPlaceConsumableId: {
+    firstPlaceConsumableTagline:{
         type: String
     },
-    thirdPlaceText: {
+    firstPlaceConsumablePrice:{
+        type: Number
+    },
+    firstPlaceConsumableRating:{
         type: String
     },
-    fourthPlaceSpotId: {
+    firstPlaceConsumableImage: {
         type: String
     },
-    fourthPlaceConsumableId: {
+    secondPlaceId: {
         type: String
     },
-    fourthPlaceText: {
+    secondPlaceImage: {
         type: String
     },
-    fifthPlaceSpotId: {
+    secondPlaceName:{
         type: String
     },
-    fifthPlaceConsumableId: {
+    secondPlaceTagline:{
         type: String
     },
-    fifthPlaceText: {
+    secondPlaceDescription:{
         type: String
     },
-    sixthPlaceSpotId: {
+    secondPlacePriceLevel:{
         type: String
     },
-    sixthPlaceConsumableId: {
+    secondPlaceCoffeeRating:{
+        type: Number
+    },
+    secondPlaceFoodRating:{
+        type: Number
+    },
+    secondPlaceAmbienceRating:{
+        type: Number
+    },
+    secondPlaceConsumableTitle:{
         type: String
     },
-    sixthPlaceText: {
+    secondPlaceConsumableTagline:{
         type: String
     },
-    seventhPlaceSpotId: {
+    secondPlaceConsumablePrice:{
+        type: Number
+    },
+    secondPlaceConsumableRating:{
         type: String
     },
-    seventhPlaceConsumableId: {
+    secondPlaceConsumableImage: {
         type: String
     },
-    seventhPlaceText: {
+    thirdPlaceId: {
         type: String
     },
-    eigthPlaceSpotId: {
+    thirdPlaceImage: {
         type: String
     },
-    eigthPlaceConsumableId: {
+    thirdPlaceName:{
         type: String
     },
-    eigthPlaceText: {
+    thirdPlaceTagline:{
         type: String
     },
-    ninthPlaceSpotId: {
+    thirdPlaceDescription:{
         type: String
     },
-    ninthPlaceConsumableId: {
+    thirdPlacePriceLevel:{
         type: String
     },
-    ninthPlaceText: {
+    thirdPlaceCoffeeRating:{
+        type: Number
+    },
+    thirdPlaceFoodRating:{
+        type: Number
+    },
+    thirdPlaceAmbienceRating:{
+        type: Number
+    },
+    thirdPlaceConsumableTitle:{
         type: String
     },
-    tenthPlaceSpotId: {
+    thirdPlaceConsumableTagline:{
         type: String
     },
-    tenthPlaceConsumableId: {
+    thirdPlaceConsumablePrice:{
+        type: Number
+    },
+    thirdPlaceConsumableRating:{
         type: String
     },
-    tenthPlaceText: {
+    thirdPlaceConsumableImage: {
+        type: String
+    },
+    fourthPlaceId: {
+        type: String
+    },
+    fourthPlaceImage: {
+        type: String
+    },
+    fourthPlaceName:{
+        type: String
+    },
+    fourthPlaceTagline:{
+        type: String
+    },
+    fourthPlaceDescription:{
+        type: String
+    },
+    fourthPlacePriceLevel:{
+        type: String
+    },
+    fourthPlaceCoffeeRating:{
+        type: Number
+    },
+    fourthPlaceFoodRating:{
+        type: Number
+    },
+    fourthPlaceAmbienceRating:{
+        type: Number
+    },
+    fourthPlaceConsumableTitle:{
+        type: String
+    },
+    fourthPlaceConsumableTagline:{
+        type: String
+    },
+    fourthPlaceConsumablePrice:{
+        type: Number
+    },
+    fourthPlaceConsumableRating:{
+        type: String
+    },
+    fourthPlaceConsumableImage: {
+        type: String
+    },
+    fifthPlaceId: {
+        type: String
+    },
+    fifthPlaceImage: {
+        type: String
+    },
+    fifthPlaceName:{
+        type: String
+    },
+    fifthPlaceTagline:{
+        type: String
+    },
+    fifthPlaceDescription:{
+        type: String
+    },
+    fifthPlacePriceLevel:{
+        type: String
+    },
+    fifthPlaceCoffeeRating:{
+        type: Number
+    },
+    fifthPlaceFoodRating:{
+        type: Number
+    },
+    fifthPlaceAmbienceRating:{
+        type: Number
+    },
+    fifthPlaceConsumableTitle:{
+        type: String
+    },
+    fifthPlaceConsumableTagline:{
+        type: String
+    },
+    fifthPlaceConsumablePrice:{
+        type: Number
+    },
+    fifthPlaceConsumableRating:{
+        type: String
+    },
+    fifthPlaceConsumableImage: {
+        type: String
+    },
+    sixthPlaceId: {
+        type: String
+    },
+    sixthPlaceImage: {
+        type: String
+    },
+    sixthPlaceName:{
+        type: String
+    },
+    sixthPlaceTagline:{
+        type: String
+    },
+    sixthPlaceDescription:{
+        type: String
+    },
+    sixthPlacePriceLevel:{
+        type: String
+    },
+    sixthPlaceCoffeeRating:{
+        type: Number
+    },
+    sixthPlaceFoodRating:{
+        type: Number
+    },
+    sixthPlaceAmbienceRating:{
+        type: Number
+    },
+    sixthPlaceConsumableTitle:{
+        type: String
+    },
+    sixthPlaceConsumableTagline:{
+        type: String
+    },
+    sixthPlaceConsumablePrice:{
+        type: Number
+    },
+    sixthPlaceConsumableRating:{
+        type: String
+    },
+    sixthPlaceConsumableImage: {
+        type: String
+    },
+    seventhPlaceId: {
+        type: String
+    },
+    seventhPlaceImage: {
+        type: String
+    },
+    seventhPlaceName:{
+        type: String
+    },
+    seventhPlaceTagline:{
+        type: String
+    },
+    seventhPlaceDescription:{
+        type: String
+    },
+    seventhPlacePriceLevel:{
+        type: String
+    },
+    seventhPlaceCoffeeRating:{
+        type: Number
+    },
+    seventhPlaceFoodRating:{
+        type: Number
+    },
+    seventhPlaceAmbienceRating:{
+        type: Number
+    },
+    seventhPlaceConsumableTitle:{
+        type: String
+    },
+    seventhPlaceConsumableTagline:{
+        type: String
+    },
+    seventhPlaceConsumablePrice:{
+        type: Number
+    },
+    seventhPlaceConsumableRating:{
+        type: String
+    },
+    seventhPlaceConsumableImage: {
+        type: String
+    },
+    eigthPlaceId: {
+        type: String
+    },
+    eigthPlaceImage: {
+        type: String
+    },
+    eigthPlaceName:{
+        type: String
+    },
+    eigthPlaceTagline:{
+        type: String
+    },
+    eigthPlaceDescription:{
+        type: String
+    },
+    eigthPlacePriceLevel:{
+        type: String
+    },
+    eigthPlaceCoffeeRating:{
+        type: Number
+    },
+    eigthPlaceFoodRating:{
+        type: Number
+    },
+    eigthPlaceAmbienceRating:{
+        type: Number
+    },
+    eigthPlaceConsumableTitle:{
+        type: String
+    },
+    eigthPlaceConsumableTagline:{
+        type: String
+    },
+    eigthPlaceConsumablePrice:{
+        type: Number
+    },
+    eigthPlaceConsumableRating:{
+        type: String
+    },
+    eigthPlaceConsumableImage: {
+        type: String
+    },
+    ninthPlaceId: {
+        type: String
+    },
+    ninthPlaceImage: {
+        type: String
+    },
+    ninthPlaceName:{
+        type: String
+    },
+    ninthPlaceTagline:{
+        type: String
+    },
+    ninthPlaceDescription:{
+        type: String
+    },
+    ninthPlacePriceLevel:{
+        type: String
+    },
+    ninthPlaceCoffeeRating:{
+        type: Number
+    },
+    ninthPlaceFoodRating:{
+        type: Number
+    },
+    ninthPlaceAmbienceRating:{
+        type: Number
+    },
+    ninthPlaceConsumableTitle:{
+        type: String
+    },
+    ninthPlaceConsumableTagline:{
+        type: String
+    },
+    ninthPlaceConsumablePrice:{
+        type: Number
+    },
+    ninthPlaceConsumableRating:{
+        type: String
+    },
+    ninthPlaceConsumableImage: {
+        type: String
+    },
+    tenthPlaceId: {
+        type: String
+    },
+    tenthPlaceImage: {
+        type: String
+    },
+    tenthPlaceName:{
+        type: String
+    },
+    tenthPlaceTagline:{
+        type: String
+    },
+    tenthPlaceDescription:{
+        type: String
+    },
+    tenthPlacePriceLevel:{
+        type: String
+    },
+    tenthPlaceCoffeeRating:{
+        type: Number
+    },
+    tenthPlaceFoodRating:{
+        type: Number
+    },
+    tenthPlaceAmbienceRating:{
+        type: Number
+    },
+    tenthPlaceConsumableTitle:{
+        type: String
+    },
+    tenthPlaceConsumableTagline:{
+        type: String
+    },
+    tenthPlaceConsumablePrice:{
+        type: Number
+    },
+    tenthPlaceConsumableRating:{
+        type: String
+    },
+    tenthPlaceConsumableImage: {
         type: String
     }
+
   }
 );
 
