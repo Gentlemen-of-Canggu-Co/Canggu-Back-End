@@ -9,9 +9,10 @@ const spotSchema = new Schema(
     },
     meal: {
         type: [String],
-        enum: ["Breakfast", "Brunch", "Lunch", "Dinner", "Late Night Food", "Drinks"],
-        required: true
-    },
+        enum: ["Breakfast", "Brunch", "Lunch", "Dinner", "Late Night Food", "Drinks", "Sweets"]    },
+    cuisine: {
+        type: [String],
+        enum: ["Indonesian", "Italian", "Burgers", "Ramen", "Smoothie Bowls", "Desserts", "Asian"]    },
     name: {
         type: String,
         required: true
@@ -75,6 +76,9 @@ const spotSchema = new Schema(
         type: Number
     },
     hasSockets: {
+        type: Boolean
+    },
+    locallyOwned: {
         type: Boolean
     },
     events: [{ type: Schema.Types.ObjectId, ref: "Event" }],
