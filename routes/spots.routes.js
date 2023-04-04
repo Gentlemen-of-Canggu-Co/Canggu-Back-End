@@ -31,6 +31,7 @@ router.post("/spots", (req, res) => {
   Spot.create({
     type,
     meal,
+    cuisine,
     name,
     tagline,
     location,
@@ -51,6 +52,7 @@ router.post("/spots", (req, res) => {
     outsideSeating,
     wifiSpeed,
     hasSockets,
+    locallyOwned,
     events: [],
     consumables: [],
   })
@@ -84,6 +86,7 @@ router.put("/spots/:spotId", (req, res) => {
   const {
     type,
     meal,
+    cuisine,
     name,
     tagline,
     location,
@@ -102,6 +105,7 @@ router.put("/spots/:spotId", (req, res) => {
     coWorkingFriendly,
     dateFriendly,
     outsideSeating,
+    locallyOwned,
     wifiSpeed,
     hasSockets,
   } = req.body;
@@ -111,6 +115,7 @@ router.put("/spots/:spotId", (req, res) => {
     {
       type,
       meal,
+      cuisine,
       name,
       tagline,
       location,
@@ -129,6 +134,7 @@ router.put("/spots/:spotId", (req, res) => {
       coWorkingFriendly,
       dateFriendly,
       outsideSeating,
+      locallyOwned,
       wifiSpeed,
       hasSockets,
     },
