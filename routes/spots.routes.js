@@ -7,6 +7,7 @@ router.post("/spots", (req, res) => {
   const {
     type,
     meal,
+    cuisine,
     name,
     tagline,
     location,
@@ -27,6 +28,7 @@ router.post("/spots", (req, res) => {
     outsideSeating,
     wifiSpeed,
     hasSockets,
+    locallyOwned
   } = req.body;
   Spot.create({
     type,
