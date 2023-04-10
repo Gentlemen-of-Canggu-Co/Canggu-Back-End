@@ -12,7 +12,7 @@ const spotSchema = new Schema(
         enum: ["Breakfast", "Brunch", "Lunch", "Dinner", "Late Night Food", "Drinks", "Sweets"]    },
     cuisine: {
         type: [String],
-        enum: ["Indonesian", "Italian", "Burgers", "Ramen", "Smoothie Bowls", "Desserts", "Asian"]    },
+        enum: ["Indonesian", "Italian", "Burgers", "Ramen", "Smoothie Bowls", "Desserts", "Asian", "Sandwiches", "Salads", "Poke Bowls"]    },
     name: {
         type: String,
         required: true
